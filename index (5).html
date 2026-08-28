@@ -1,0 +1,771 @@
+<title>Logitide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:#0f172a;line-height:1.6;overflow-x:hidden;font-size:16px}
+a{text-decoration:none;color:inherit}
+button{font-family:inherit;cursor:pointer;border:none}
+
+/* ── TOKENS ── */
+:root{
+  --navy:#0a1628;
+  --navy2:#0e1f3d;
+  --blue:#2563eb;
+  --blue2:#3b82f6;
+  --blue-light:#eff6ff;
+  --green:#16a34a;
+  --red:#dc2626;
+  --amber:#d97706;
+  --purple:#7c3aed;
+  --ink:#0f172a;
+  --ink2:#1e293b;
+  --muted:#64748b;
+  --border:#e2e8f0;
+  --surface:#f8fafc;
+  --white:#ffffff;
+}
+
+/* ── NAV ── */
+nav{
+  position:sticky;top:0;z-index:100;
+  background:var(--navy);
+  border-bottom:1px solid rgba(255,255,255,0.08);
+  backdrop-filter:blur(12px);
+}
+.nav-inner{
+  max-width:1180px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 2rem;height:58px;
+}
+.logo{display:flex;align-items:center;gap:9px}
+.logo-icon{
+  width:30px;height:30px;border-radius:8px;
+  background:linear-gradient(135deg,#1d4ed8,#3b82f6);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.logo-icon svg{width:15px;height:15px;stroke:#fff;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.logo-name{font-size:1.05rem;font-weight:800;color:#fff;letter-spacing:-.02em}
+.logo-beta{font-size:.62rem;font-weight:700;color:var(--blue2);background:rgba(59,130,246,.15);border:1px solid rgba(59,130,246,.3);border-radius:4px;padding:1px 6px;letter-spacing:.05em}
+.nav-links{display:flex;gap:2rem}
+.nav-links a{font-size:.85rem;font-weight:500;color:rgba(255,255,255,.55);transition:color .15s}
+.nav-links a:hover{color:#fff}
+.nav-cta{background:var(--blue);color:#fff;padding:.45rem 1.2rem;border-radius:7px;font-size:.85rem;font-weight:600;transition:background .15s}
+.nav-cta:hover{background:#1d4ed8}
+
+/* ── HERO ── */
+.hero{
+  background:var(--navy);
+  padding:5rem 2rem 4.5rem;
+}
+.hero-inner{
+  max-width:1180px;margin:0 auto;
+  display:grid;grid-template-columns:1fr 480px;gap:4rem;align-items:center;
+}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:7px;
+  font-size:.73rem;font-weight:600;letter-spacing:.07em;color:rgba(255,255,255,.5);
+  border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:4px 12px;margin-bottom:1.5rem;
+}
+.hero-dot{width:6px;height:6px;border-radius:50%;background:#22c55e;display:inline-block;box-shadow:0 0 6px #22c55e}
+.hero h1{
+  font-size:3rem;font-weight:900;line-height:1.1;letter-spacing:-.03em;
+  color:#fff;margin-bottom:1.25rem;
+}
+.hero h1 .accent{color:var(--blue2)}
+.hero-sub{font-size:1rem;color:rgba(255,255,255,.55);line-height:1.75;max-width:480px;margin-bottom:2rem}
+.hero-btns{display:flex;gap:.75rem;flex-wrap:wrap;margin-bottom:2.5rem}
+.btn-primary{
+  display:inline-flex;align-items:center;gap:7px;
+  background:var(--blue);color:#fff;padding:.72rem 1.5rem;
+  border-radius:8px;font-weight:700;font-size:.9rem;
+  transition:all .15s;border:none;cursor:pointer;
+}
+.btn-primary:hover{background:#1d4ed8;box-shadow:0 0 28px rgba(37,99,235,.4);transform:translateY(-1px)}
+.btn-ghost{
+  display:inline-flex;align-items:center;gap:7px;
+  color:rgba(255,255,255,.7);padding:.72rem 1.5rem;
+  border-radius:8px;font-weight:600;font-size:.9rem;
+  border:1px solid rgba(255,255,255,.15);transition:all .15s;cursor:pointer;background:transparent;
+}
+.btn-ghost:hover{border-color:rgba(255,255,255,.35);color:#fff;background:rgba(255,255,255,.05)}
+.hero-stats{display:flex;gap:2.5rem}
+.stat-val{font-size:1.6rem;font-weight:900;color:#fff;letter-spacing:-.02em;line-height:1}
+.stat-val sup{font-size:.7rem;font-weight:500;color:rgba(255,255,255,.4)}
+.stat-lbl{font-size:.73rem;color:rgba(255,255,255,.4);margin-top:3px}
+
+/* ── MOCKUP ── */
+.mockup{
+  background:#0e1f3d;
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:14px;
+  box-shadow:0 32px 80px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.04);
+  overflow:hidden;
+  font-size:12px;
+}
+.mockup-bar{
+  background:#091224;border-bottom:1px solid rgba(255,255,255,.07);
+  padding:9px 14px;display:flex;align-items:center;gap:6px;
+}
+.mdot{width:10px;height:10px;border-radius:50%}
+.mockup-url{font-size:.65rem;color:#334155;margin-left:6px}
+.mkpi{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;padding:11px 13px 10px}
+.mkpi-card{background:#091224;border:1px solid rgba(255,255,255,.07);border-radius:7px;padding:8px 10px}
+.mkpi-lbl{font-size:.58rem;font-weight:700;letter-spacing:.07em;color:#475569;text-transform:uppercase;margin-bottom:3px}
+.mkpi-val{font-size:1.05rem;font-weight:900;line-height:1}
+.mabc{padding:0 13px 10px}
+.mabc-lbl{font-size:.6rem;font-weight:700;letter-spacing:.07em;color:#334155;margin-bottom:6px}
+.mbar-row{display:flex;align-items:center;gap:7px;margin-bottom:4px;font-size:.63rem}
+.mbar-track{flex:1;height:4px;background:#091224;border-radius:2px;overflow:hidden}
+.mbar-fill{height:100%;border-radius:2px}
+.mbar-name{color:#64748b;width:44px}
+.mbar-pct{color:#475569;width:24px;text-align:right}
+.mactions{padding:0 13px 12px}
+.mact-lbl{font-size:.6rem;font-weight:700;letter-spacing:.07em;color:#334155;margin-bottom:5px}
+.mact-row{display:flex;align-items:center;justify-content:space-between;padding:5px 0;border-top:1px solid rgba(255,255,255,.04)}
+.mact-name{display:flex;align-items:center;gap:6px;font-size:.67rem;color:#94a3b8}
+.mact-bar{width:3px;height:14px;border-radius:2px;flex-shrink:0}
+.mact-chip{font-size:.57rem;font-weight:700;border-radius:4px;padding:2px 6px}
+
+/* ── TICKER ── */
+.ticker{
+  background:#fff;
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  overflow:hidden;padding:0;
+}
+.ticker-track{display:flex;gap:0;animation:tick 30s linear infinite;width:max-content}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.ticker-inner{display:flex;align-items:center;height:44px}
+.ticker-item{
+  display:flex;align-items:center;gap:.5rem;
+  font-size:.78rem;font-weight:600;color:#94a3b8;
+  padding:0 1.75rem;border-right:1px solid var(--border);white-space:nowrap;
+}
+.ticker-item::before{content:'✓';color:#22c55e;font-size:.8rem}
+
+/* ── KPI STRIP ── */
+.kpi-strip{
+  background:#fff;
+  border-bottom:1px solid var(--border);
+}
+.kpi-strip-inner{
+  max-width:1180px;margin:0 auto;
+  display:grid;grid-template-columns:repeat(4,1fr);
+}
+.kstrip-item{
+  padding:2rem 2.5rem;border-right:1px solid var(--border);
+  text-align:center;
+}
+.kstrip-item:last-child{border-right:none}
+.kstrip-val{font-size:2.2rem;font-weight:900;letter-spacing:-.03em;line-height:1}
+.kstrip-sub{font-size:.78rem;color:var(--muted);margin-top:.35rem;line-height:1.4}
+
+/* ── SECTION BASE ── */
+.section{padding:5rem 2rem;max-width:1180px;margin:0 auto}
+.section-dark{background:var(--navy);color:#fff}
+.section-white{background:#fff}
+.section-surface{background:var(--surface)}
+.eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.6rem}
+.section h2{font-size:2.1rem;font-weight:900;letter-spacing:-.03em;line-height:1.2;margin-bottom:.75rem}
+.section-lead{font-size:.95rem;color:var(--muted);max-width:560px;line-height:1.75}
+
+/* ── TRAPS (pain cards with "before/after") ── */
+.traps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2.5rem}
+.trap-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:1.5rem;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+.trap-icon{font-size:1.75rem;margin-bottom:1rem}
+.trap-tag{font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.5rem}
+.trap-card h3{font-size:1rem;font-weight:800;color:var(--ink);margin-bottom:.5rem;line-height:1.3}
+.trap-scenario{font-size:.8rem;color:var(--muted);line-height:1.6;margin-bottom:.875rem}
+.trap-solution{background:var(--surface);border-radius:8px;padding:.75rem 1rem;border-left:3px solid}
+.trap-solution-lbl{font-size:.65rem;font-weight:700;letter-spacing:.07em;margin-bottom:.3rem}
+.trap-solution p{font-size:.8rem;line-height:1.55}
+
+/* ── JOURNEY ── */
+.journey{max-width:800px;margin:2.5rem auto 0}
+.journey-line{display:flex;align-items:flex-start;gap:0;position:relative}
+.journey-track{
+  display:flex;justify-content:space-between;align-items:flex-start;
+  position:relative;gap:0;
+}
+.journey-track::before{
+  content:'';position:absolute;top:20px;left:calc(16.6%);right:calc(16.6%);
+  height:2px;background:linear-gradient(90deg,#22c55e,#2563eb,#1e293b);
+}
+.journey-step{flex:1;text-align:center;padding:0 .5rem}
+.journey-node{
+  width:40px;height:40px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.9rem;font-weight:900;color:#fff;margin:0 auto 1rem;
+  position:relative;z-index:1;
+}
+.journey-tag{font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.35rem}
+.journey-step h3{font-size:.95rem;font-weight:800;color:var(--ink);margin-bottom:.35rem}
+.journey-step p{font-size:.8rem;color:var(--muted);line-height:1.6}
+.journey-note{font-size:.75rem;font-style:italic;color:var(--blue);margin-top:.5rem}
+
+/* ── FEATURES ── */
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2.5rem;grid-auto-rows:1fr}
+.feat-card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:1.5rem;transition:box-shadow .2s,border-color .2s}
+.feat-card:hover{box-shadow:0 8px 32px rgba(0,0,0,.08);border-color:#cbd5e1}
+.feat-card.coming{opacity:.55}
+.feat-icon{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem}
+.feat-tag{font-size:.64rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;margin-bottom:.35rem}
+.feat-card h3{font-size:.95rem;font-weight:800;color:var(--ink);margin-bottom:.35rem}
+.feat-card p{font-size:.8rem;color:var(--muted);line-height:1.6}
+.feat-soon{font-size:.65rem;font-weight:700;color:var(--muted);background:var(--surface);border-radius:4px;padding:1px 6px;margin-left:6px;border:1px solid var(--border)}
+
+/* ── PARTNERSHIP ── */
+.partner-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2rem}
+.partner-card{background:#0e1f3d;border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:1.5rem}
+.partner-card-wide{grid-column:span 1}
+.partner-icon{font-size:1.5rem;margin-bottom:.875rem}
+.partner-card h3{font-size:.95rem;font-weight:800;color:#fff;margin-bottom:.4rem}
+.partner-card p{font-size:.8rem;color:rgba(255,255,255,.45);line-height:1.65}
+.partner-philosophy{
+  grid-column:span 3;
+  background:rgba(37,99,235,.12);border:1px solid rgba(59,130,246,.25);
+  border-radius:12px;padding:1.25rem 1.5rem;
+  font-size:.85rem;color:rgba(255,255,255,.7);line-height:1.7;
+  margin-top:.25rem;
+}
+.partner-philosophy strong{color:#fff}
+
+/* ── PRICING ── */
+.pricing-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:1.25rem;max-width:860px;margin:2.5rem auto 0}
+.price-card{
+  background:#0e1f3d;border:1px solid rgba(255,255,255,.1);
+  border-radius:14px;padding:2rem;
+}
+.price-card.featured{
+  background:#fff;border:2px solid var(--blue);
+  box-shadow:0 16px 48px rgba(37,99,235,.2);
+}
+.price-tag{font-size:.65rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;margin-bottom:.5rem}
+.price-label{font-size:.9rem;font-weight:700;margin-bottom:.25rem}
+.price-val{font-size:3rem;font-weight:900;letter-spacing:-.03em;line-height:1;margin-bottom:.25rem}
+.price-note{font-size:.75rem;margin-bottom:1.25rem}
+.price-features{list-style:none;display:flex;flex-direction:column;gap:.5rem;margin-bottom:1.5rem}
+.price-features li{font-size:.83rem;display:flex;align-items:flex-start;gap:.6rem;line-height:1.5}
+.price-features li::before{content:'✓';font-weight:700;flex-shrink:0;margin-top:.1rem}
+.price-badge{
+  display:inline-flex;align-items:center;gap:5px;
+  font-size:.7rem;font-weight:700;
+  background:rgba(37,99,235,.1);color:var(--blue);
+  border-radius:5px;padding:2px 8px;margin-left:auto;
+  border:1px solid rgba(37,99,235,.2);
+}
+.price-card-dark .price-tag{color:rgba(255,255,255,.4)}
+.price-card-dark .price-label{color:rgba(255,255,255,.7)}
+.price-card-dark .price-val{color:#fff}
+.price-card-dark .price-note{color:rgba(255,255,255,.35)}
+.price-card-dark .price-features li{color:rgba(255,255,255,.6)}
+.price-card-dark .price-features li::before{color:rgba(255,255,255,.3)}
+.price-card-dark .btn-dark{background:rgba(255,255,255,.08);color:rgba(255,255,255,.7);padding:.7rem 1.5rem;border-radius:8px;font-weight:600;font-size:.9rem;width:100%;text-align:center;display:block;border:1px solid rgba(255,255,255,.1);cursor:pointer}
+.price-card.featured .price-tag{color:var(--blue)}
+.price-card.featured .price-label{color:var(--ink2)}
+.price-card.featured .price-val{color:var(--ink)}
+.price-card.featured .price-note{color:var(--muted)}
+.price-card.featured .price-features li{color:var(--ink2)}
+.price-card.featured .price-features li::before{color:var(--green)}
+.pricing-footer{text-align:center;font-size:.78rem;color:rgba(255,255,255,.35);margin-top:1.25rem}
+
+/* ── FAQ ── */
+.faq-list{max-width:720px;margin:2.5rem auto 0}
+.faq-item{border-bottom:1px solid var(--border)}
+.faq-q{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.1rem 0;cursor:pointer;
+  font-size:.95rem;font-weight:600;color:var(--ink);gap:1rem;
+  user-select:none;
+}
+.faq-q:hover{color:var(--blue)}
+.faq-chevron{color:var(--muted);font-size:.75rem;transition:transform .2s;flex-shrink:0}
+.faq-a{display:none;padding-bottom:1rem;font-size:.875rem;color:var(--muted);line-height:1.75}
+.faq-item.open .faq-a{display:block}
+.faq-item.open .faq-chevron{transform:rotate(180deg)}
+
+/* ── FINAL CTA ── */
+.final-cta{
+  background:var(--surface);border-top:1px solid var(--border);
+  padding:5rem 2rem;text-align:center;
+}
+.final-cta h2{font-size:2.25rem;font-weight:900;letter-spacing:-.03em;color:var(--ink);margin-bottom:.6rem}
+.final-cta h2 span{color:var(--blue)}
+.final-cta p{font-size:.93rem;color:var(--muted);margin-bottom:2rem}
+.final-btns{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap}
+.btn-primary-dark{
+  display:inline-flex;align-items:center;gap:7px;
+  background:var(--blue);color:#fff;padding:.75rem 1.75rem;
+  border-radius:8px;font-weight:700;font-size:.95rem;
+  transition:all .15s;cursor:pointer;border:none;
+}
+.btn-primary-dark:hover{background:#1d4ed8;box-shadow:0 0 28px rgba(37,99,235,.35);transform:translateY(-1px)}
+.btn-outline{
+  display:inline-flex;align-items:center;gap:7px;
+  color:var(--ink2);padding:.75rem 1.75rem;
+  border-radius:8px;font-weight:600;font-size:.95rem;
+  border:1px solid var(--border);transition:all .15s;cursor:pointer;background:#fff;
+}
+.btn-outline:hover{border-color:#94a3b8}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--navy);
+  border-top:1px solid rgba(255,255,255,.07);
+  padding:1.75rem 2rem;
+  display:flex;align-items:center;justify-content:space-between;
+}
+footer p{font-size:.78rem;color:rgba(255,255,255,.25)}
+footer a{font-size:.78rem;color:rgba(255,255,255,.4);transition:color .15s}
+footer a:hover{color:#fff}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .hero-inner{grid-template-columns:1fr;gap:2.5rem}
+  .mockup{display:none}
+  .hero h1{font-size:2.25rem}
+  .kpi-strip-inner{grid-template-columns:repeat(2,1fr)}
+  .kstrip-item:nth-child(2){border-right:none}
+  .traps-grid,.feat-grid,.partner-grid,.pricing-grid{grid-template-columns:1fr}
+  .partner-philosophy{grid-column:span 1}
+  .nav-links{display:none}
+  .journey-track::before{display:none}
+  nav,.hero,.section,.final-cta,.kpi-strip-inner{padding-left:1.25rem;padding-right:1.25rem}
+}
+</style>
+
+<!-- ══════════════════════ NAV ══════════════════════ -->
+<nav>
+  <div class="nav-inner">
+    <div class="logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      </div>
+      <span class="logo-name">Logitide</span>
+      <span class="logo-beta">BETA</span>
+    </div>
+    <div class="nav-links">
+      <a href="#how">Så fungerar det</a>
+      <a href="#moduler">Moduler</a>
+      <a href="#partnerskap">Partnerskap</a>
+      <a href="#pilot">Pilot</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <a href="#pilot" class="nav-cta">Ansök om tillgång →</a>
+  </div>
+</nav>
+
+<!-- ══════════════════════ HERO ══════════════════════ -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow"><span class="hero-dot"></span> Beta — testat av svenska lagerchefer</div>
+      <h1>Från kaos till<br><span class="accent">klarhet på 60 sek.</span></h1>
+      <p class="hero-sub">Logitide analyserar ditt lagersaldo och ger lageransvarig en prioriterad lista på exakt vad som kräver handling — varje dag. Inga fler Excel-jakter. Inga fler överraskningar.</p>
+      <div class="hero-btns">
+        <a href="#pilot" class="btn-primary">Ansök om tillgång →</a>
+        <a href="#apply" class="btn-ghost">⚡ Se en snabb demo</a>
+      </div>
+      <div class="hero-stats">
+        <div><div class="stat-val">60<sup> sek</sup></div><div class="stat-lbl">Till första prioritering</div></div>
+        <div><div class="stat-val">0<sup> kr</sup></div><div class="stat-lbl">Att komma igång</div></div>
+        <div><div class="stat-val">100<sup> %</sup></div><div class="stat-lbl">Transparenta beräkningar</div></div>
+      </div>
+    </div>
+
+    <!-- App mockup -->
+    <div class="mockup">
+      <div class="mockup-bar">
+        <div class="mdot" style="background:#ef4444"></div>
+        <div class="mdot" style="background:#f59e0b"></div>
+        <div class="mdot" style="background:#22c55e"></div>
+        <span class="mockup-url">logitide — Översikt</span>
+      </div>
+      <div class="mkpi">
+        <div class="mkpi-card"><div class="mkpi-lbl">Bundet kapital</div><div class="mkpi-val" style="color:#a855f7">4,5 mkr</div></div>
+        <div class="mkpi-card"><div class="mkpi-lbl">Kritiska brister</div><div class="mkpi-val" style="color:#ef4444">4 st</div></div>
+        <div class="mkpi-card"><div class="mkpi-lbl">Överlager</div><div class="mkpi-val" style="color:#f97316">8 art.</div></div>
+        <div class="mkpi-card"><div class="mkpi-lbl">Att beställa</div><div class="mkpi-val" style="color:#3b82f6">1 500 tkr</div></div>
+      </div>
+      <div class="mabc">
+        <div class="mabc-lbl">ABC-FÖRDELNING</div>
+        <div class="mbar-row"><span class="mbar-name">A-artiklar</span><div class="mbar-track"><div class="mbar-fill" style="width:84%;background:#22c55e"></div></div><span class="mbar-pct">84%</span></div>
+        <div class="mbar-row"><span class="mbar-name">B-artiklar</span><div class="mbar-track"><div class="mbar-fill" style="width:12%;background:#f59e0b"></div></div><span class="mbar-pct">12%</span></div>
+        <div class="mbar-row"><span class="mbar-name">C-artiklar</span><div class="mbar-track"><div class="mbar-fill" style="width:4%;background:#6b7280"></div></div><span class="mbar-pct">4%</span></div>
+      </div>
+      <div class="mactions">
+        <div class="mact-lbl">ÅTGÄRDER IDAG</div>
+        <div class="mact-row">
+          <div class="mact-name"><div class="mact-bar" style="background:#ef4444"></div>Hydraulpump 18cc — beställ 24 st</div>
+          <span class="mact-chip" style="background:#fef2f2;color:#dc2626">KRITISK</span>
+        </div>
+        <div class="mact-row">
+          <div class="mact-name"><div class="mact-bar" style="background:#f59e0b"></div>Kullager 6205 — flytta till Zon A</div>
+          <span class="mact-chip" style="background:#fffbeb;color:#d97706">BEVAKA</span>
+        </div>
+        <div class="mact-row">
+          <div class="mact-name"><div class="mact-bar" style="background:#a855f7"></div>O-ring 80×4 — minska inköpskvantitet</div>
+          <span class="mact-chip" style="background:#faf5ff;color:#7c3aed">ÖVERLAGER</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ TICKER ══════════════════════ -->
+<div class="ticker">
+  <div class="ticker-track">
+    <div class="ticker-inner" id="tick1">
+      <div class="ticker-item">Visma</div><div class="ticker-item">Business Central</div><div class="ticker-item">Pyramid</div><div class="ticker-item">Jeeves</div><div class="ticker-item">Fortnox</div><div class="ticker-item">SAP</div><div class="ticker-item">Alla affärssystem via Excel-export</div><div class="ticker-item">Monitor ERP</div><div class="ticker-item">Visma</div><div class="ticker-item">Business Central</div><div class="ticker-item">Pyramid</div><div class="ticker-item">Jeeves</div><div class="ticker-item">Fortnox</div><div class="ticker-item">SAP</div><div class="ticker-item">Alla affärssystem via Excel-export</div><div class="ticker-item">Monitor ERP</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════ KPI STRIP ══════════════════════ -->
+<div class="kpi-strip">
+  <div class="kpi-strip-inner">
+    <div class="kstrip-item">
+      <div class="kstrip-val" style="color:var(--blue)">60 <span style="font-size:1.1rem;color:var(--muted)">sek</span></div>
+      <div class="kstrip-sub">Till första prioritering</div>
+    </div>
+    <div class="kstrip-item">
+      <div class="kstrip-val" style="color:var(--green)">100<span style="font-size:1.1rem;color:var(--muted)">%</span></div>
+      <div class="kstrip-sub">Transparenta beräkningar — ingen svart låda</div>
+    </div>
+    <div class="kstrip-item">
+      <div class="kstrip-val" style="color:#ea580c">0 <span style="font-size:1.1rem;color:var(--muted)">Excel</span></div>
+      <div class="kstrip-sub">Ingen manuell analys behövs</div>
+    </div>
+    <div class="kstrip-item">
+      <div class="kstrip-val" style="color:var(--purple)">Direkt</div>
+      <div class="kstrip-sub">Konkreta åtgärder — inte bara siffror</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════ TRAPS ══════════════════════ -->
+<div class="section-white" id="pain">
+  <div class="section">
+    <div class="eyebrow" style="color:var(--blue)">Känner du igen dig?</div>
+    <h2>Tre fällor som finns i<br>nästan varje lager</h2>
+    <p class="section-lead">Logitide hittar dem automatiskt. Varje dag. Innan de blir ett problem.</p>
+    <div class="traps-grid">
+      <div class="trap-card">
+        <div class="trap-icon">🚨</div>
+        <div class="trap-tag" style="color:#dc2626">Restnoteringsstopp</div>
+        <h3>Lagret tar slut — ordern kan inte plockas</h3>
+        <p class="trap-scenario">M12 Bult helgäng: 420 st kvar, förbrukning 780 st/dag. Lagret tar slut idag. Beställning är inte lagd.</p>
+        <div class="trap-solution" style="border-color:#22c55e">
+          <div class="trap-solution-lbl" style="color:#16a34a">✓ Logitides lösning</div>
+          <p style="color:#166534">Logitide visar det kl 07:00. Du beställer. Krisen uteblir.</p>
+        </div>
+      </div>
+      <div class="trap-card">
+        <div class="trap-icon">📦</div>
+        <div class="trap-tag" style="color:#d97706">Fel artiklar på fel plats</div>
+        <h3>A-artiklar längst bort från plockstationen</h3>
+        <p class="trap-scenario">ABC-analysen visar att era frekventa artiklar ligger i Zon C medan långsamma artiklar blockerar guldzonerna.</p>
+        <div class="trap-solution" style="border-color:#f59e0b">
+          <div class="trap-solution-lbl" style="color:#b45309">✓ Logitides lösning</div>
+          <p style="color:#78350f">Logitide klassificerar och prioriterar — du ser exakt vilka artiklar som ska flyttas och varför.</p>
+        </div>
+      </div>
+      <div class="trap-card">
+        <div class="trap-icon">💸</div>
+        <div class="trap-tag" style="color:#7c3aed">Kapital bundet i onödan</div>
+        <h3>Överlager binder kapital som inte genererar värde</h3>
+        <p class="trap-scenario">120 pallar i lager, maxnivå 30. 90 pallar för mycket — 450 000 kr bundet kapital som inte omsätts.</p>
+        <div class="trap-solution" style="border-color:#a855f7">
+          <div class="trap-solution-lbl" style="color:#6d28d9">✓ Logitides lösning</div>
+          <p style="color:#4c1d95">Logitide beräknar och visar vad det kostar per månad att låta det fortsätta.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════ HOW IT WORKS ══════════════════════ -->
+<div class="section-surface" id="how">
+  <div class="section">
+    <div class="eyebrow" style="color:var(--blue)">Så här fungerar det</div>
+    <h2>Din resa med Logitide</h2>
+    <p class="section-lead">Tre steg från första filen till ett optimerat lager. Ingen implementation. Ingen konsult. Bara en enkel export från ditt affärssystem.</p>
+    <div class="journey">
+      <div class="journey-track">
+        <div class="journey-step">
+          <div class="journey-node" style="background:#22c55e">1</div>
+          <div class="journey-tag" style="color:#16a34a">Utan kostnad</div>
+          <h3>Lagerdiagnos</h3>
+          <p>Ladda upp din artikelexport. På 60 sekunder ser du överlager, brister och bundet kapital i kronor. Inga förpliktelser — bara insikt.</p>
+        </div>
+        <div class="journey-step">
+          <div class="journey-node" style="background:#2563eb">2</div>
+          <div class="journey-tag" style="color:#2563eb">Startprogram</div>
+          <h3>KPI-uppsättning</h3>
+          <p>Vi kalibrerar systemet för ditt lager: ledtider, leverantörer, säkerhetslager och servicenivå. Startprogram: 4 900 kr/månad i 3 månader. Halverat pris för de 5 första kunderna som delar resultat som referenscase.</p>
+        </div>
+        <div class="journey-step">
+          <div class="journey-node" style="background:#1e293b">3</div>
+          <div class="journey-tag" style="color:var(--muted)">Löpande · Full kontroll</div>
+          <h3>Löpande optimering</h3>
+          <p>Varje vecka ser lageransvarig exakt vad som behöver åtgärdas — brist, överlager, flytt eller inköp. Logitide är inte ett system du köper — det är ett samarbete som utvecklar ert lager månad för månad. Utan bindningstid.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════ FEATURES ══════════════════════ -->
+<div class="section-white" id="moduler">
+  <div class="section">
+    <div class="eyebrow" style="color:var(--blue)">Moduler</div>
+    <h2>Allt lagerchefen behöver.<br>Ingenting mer.</h2>
+    <div class="feat-grid">
+      <div class="feat-card">
+        <div class="feat-icon" style="background:#fef2f2"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+        <div class="feat-tag" style="color:#dc2626">Inga överraskningar</div>
+        <h3>Bristkontroll</h3>
+        <p>Se vilka artiklar som saknas eller är på väg att ta slut — prioriterade efter affärspåverkan.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon" style="background:#f0fdf4"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.5"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
+        <div class="feat-tag" style="color:#16a34a">ABC/XYZ varje vecka</div>
+        <h3>Kapitaloptimering</h3>
+        <p>Automatisk klassificering av hela sortimentet. Se hur mycket kapital som är bundet var.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon" style="background:#eff6ff"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2.5"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></div>
+        <div class="feat-tag" style="color:#2563eb">Rätt plats, kortare väg</div>
+        <h3>Slotting</h3>
+        <p>Identifierar felplacerade artiklar. Frekventa artiklar ska alltid stå närmast plockstationen.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon" style="background:#fff7ed"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ea580c" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <div class="feat-tag" style="color:#ea580c">Ett klick, klart</div>
+        <h3>Inköpsförslag</h3>
+        <p>Beräknar automatiskt rätt orderkvantitet baserat på förbrukning, ledtid och säkerhetslager.</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon" style="background:#f0f9ff"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <div class="feat-tag" style="color:#0284c7">Alltid tillgänglig</div>
+        <h3>Historik</h3>
+        <p>Se hur lagret förändrats över tid. Jämför tidigare uppladdningar och följ trenden vecka för vecka.</p>
+      </div>
+      <div class="feat-card coming">
+        <div class="feat-icon" style="background:#f8fafc"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+        <div class="feat-tag" style="color:#94a3b8">Mätbara mål <span class="feat-soon">Kommer snart</span></div>
+        <h3>KPI & Produktivitet</h3>
+        <p>Sätt produktivitetsmål och följ upp mot utfall. Plockproduktivitet, OTIF, lageromsättning.</p>
+      </div>
+      <div class="feat-card coming">
+        <div class="feat-icon" style="background:#f8fafc"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+        <div class="feat-tag" style="color:#94a3b8">Avtal vs verklighet <span class="feat-soon">Kommer snart</span></div>
+        <h3>Leverantörsanalys</h3>
+        <p>Jämför avtalad mot faktisk ledtid. Vet vilka leverantörer som är en risk för ditt lager.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════ PARTNERSHIP ══════════════════════ -->
+<div class="section-dark" id="partnerskap">
+  <div class="section" style="color:#fff">
+    <div class="eyebrow" style="color:rgba(255,255,255,.4)">Vår modell</div>
+    <h2 style="color:#fff">Logitide är ett partnerskap,<br>inte ett abonnemang</h2>
+    <p class="section-lead" style="color:rgba(255,255,255,.5)">Vi är inte ännu en SaaS-tjänst du köper och glömmer. Vi vill förstå ditt lager på djupet — och hjälpa dig förbättra det månad efter månad.</p>
+    <div class="partner-grid" style="margin-top:2rem">
+      <div class="partner-card">
+        <div class="partner-icon">🤝</div>
+        <h3>3 timmar konsult per månad</h3>
+        <p>Varje månad har ni 3 inlagda timmar med en Logitide-specialist. Vi går igenom era KPI:er, identifierar mönster och ger konkreta förbättringsförslag — inte bara data.</p>
+      </div>
+      <div class="partner-card">
+        <div class="partner-icon">🎯</div>
+        <h3>Anpassat till ert lager</h3>
+        <p>Säkerhetslager, ledtider, ABC-gränser — allt kalibreras efter hur just ert lager fungerar. Inga generiska mallar. Vi sätter parametrarna tillsammans med er lageransvariga.</p>
+      </div>
+      <div class="partner-card">
+        <div class="partner-icon">📈</div>
+        <h3>Mätbar förbättring månadsvis</h3>
+        <p>Vi sätter mätbara mål i piloten och följer upp dem varje månad. Servicenivå, bundet kapital, överlager i kronor — ni ser svart på vitt vad samarbetet ger.</p>
+      </div>
+      <div class="partner-card" style="grid-column:span 3">
+        <div class="partner-icon">🔄</div>
+        <h3>Systemet växer med er</h3>
+        <p>Nya moduler, ny ERP-integration, fler användare — Logitide skalas efter era behov. Ni behöver aldrig byta system när ni växer.</p>
+      </div>
+      <div class="partner-philosophy" style="grid-column:span 3">
+        <strong>Vår filosofi:</strong> Priset sätts alltid i samråd med er — efter piloten, när vi vet exakt vad systemet ger ert lager i konkret värde. Ingen bindningstid. Ingen startkostnad.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════ ANSÖK ══════════════════════ -->
+<div class="section-dark" id="pilot" style="border-top:1px solid rgba(255,255,255,.06)"><span id="apply"></span>
+  <div class="section" style="color:#fff">
+    <div style="max-width:860px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center">
+      <!-- Vänster: text -->
+      <div>
+        <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(59,130,246,.15);color:var(--blue2);border:1px solid rgba(59,130,246,.25);border-radius:20px;padding:4px 14px;font-size:.72rem;font-weight:700;letter-spacing:.07em;margin-bottom:1.25rem">Begränsat antal platser just nu</div>
+        <h2 style="color:#fff;margin-bottom:1rem">Ansök om tillgång till Logitide</h2>
+        <p style="color:rgba(255,255,255,.5);font-size:.93rem;line-height:1.8;margin-bottom:1.75rem">Vi tar emot ett begränsat antal kunder åt gången för att kunna ge varje lager rätt uppmärksamhet. Ansök nedan — vi hör av oss inom 24 timmar för att boka en genomgång med er data.</p>
+        <div style="display:flex;flex-direction:column;gap:.875rem">
+          <div style="display:flex;align-items:flex-start;gap:.875rem">
+            <div style="width:32px;height:32px;border-radius:50%;background:rgba(37,99,235,.2);border:1px solid rgba(59,130,246,.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.8rem;font-weight:700;color:var(--blue2)">1</div>
+            <div><div style="font-size:.88rem;font-weight:700;color:#fff;margin-bottom:2px">Ni skickar in er ansökan</div><div style="font-size:.8rem;color:rgba(255,255,255,.4);line-height:1.6">Namn, företag, affärssystem och ungefär antal artiklar i lagret.</div></div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:.875rem">
+            <div style="width:32px;height:32px;border-radius:50%;background:rgba(37,99,235,.2);border:1px solid rgba(59,130,246,.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.8rem;font-weight:700;color:var(--blue2)">2</div>
+            <div><div style="font-size:.88rem;font-weight:700;color:#fff;margin-bottom:2px">Vi bokar 30 min genomgång</div><div style="font-size:.8rem;color:rgba(255,255,255,.4);line-height:1.6">Vi analyserar ert lager live med er egen artikeldata.</div></div>
+          </div>
+          <div style="display:flex;align-items:flex-start;gap:.875rem">
+            <div style="width:32px;height:32px;border-radius:50%;background:rgba(37,99,235,.2);border:1px solid rgba(59,130,246,.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.8rem;font-weight:700;color:var(--blue2)">3</div>
+            <div><div style="font-size:.88rem;font-weight:700;color:#fff;margin-bottom:2px">Ni bestämmer om ni vill gå vidare</div><div style="font-size:.8rem;color:rgba(255,255,255,.4);line-height:1.6">Ingen bindningstid, inga dolda kostnader. Pris sätts alltid i samråd.</div></div>
+          </div>
+        </div>
+      </div>
+      <!-- Höger: formulär -->
+      <div style="background:#0e1f3d;border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:2rem">
+        <div style="font-size:1rem;font-weight:800;color:#fff;margin-bottom:.4rem">Ansök om tillgång</div>
+        <div style="font-size:.8rem;color:rgba(255,255,255,.35);margin-bottom:1.5rem">Vi hör av oss inom 24 timmar.</div>
+        <form action="https://formspree.io/f/moeqazgz" method="POST" style="display:flex;flex-direction:column;gap:.875rem" onsubmit="handleFormSubmit(event)">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem">
+            <div>
+              <label style="font-size:.72rem;font-weight:600;color:rgba(255,255,255,.4);display:block;margin-bottom:.3rem">Förnamn *</label>
+              <input name="fornamn" required type="text" placeholder="Erik" style="width:100%;background:#091224;border:1px solid rgba(255,255,255,.1);border-radius:7px;padding:.6rem .85rem;color:#fff;font-size:.85rem;font-family:inherit;outline:none" onfocus="this.style.borderColor='rgba(59,130,246,.5)'" onblur="this.style.borderColor='rgba(255,255,255,.1)'">
+            </div>
+            <div>
+              <label style="font-size:.72rem;font-weight:600;color:rgba(255,255,255,.4);display:block;margin-bottom:.3rem">Efternamn *</label>
+              <input name="efternamn" required type="text" placeholder="Lindberg" style="width:100%;background:#091224;border:1px solid rgba(255,255,255,.1);border-radius:7px;padding:.6rem .85rem;color:#fff;font-size:.85rem;font-family:inherit;outline:none" onfocus="this.style.borderColor='rgba(59,130,246,.5)'" onblur="this.style.borderColor='rgba(255,255,255,.1)'">
+            </div>
+          </div>
+          <div>
+            <label style="font-size:.72rem;font-weight:600;color:rgba(255,255,255,.4);display:block;margin-bottom:.3rem">Företag *</label>
+            <input name="foretag" required type="text" placeholder="Lindberg Industri AB" style="width:100%;background:#091224;border:1px solid rgba(255,255,255,.1);border-radius:7px;padding:.6rem .85rem;color:#fff;font-size:.85rem;font-family:inherit;outline:none" onfocus="this.style.borderColor='rgba(59,130,246,.5)'" onblur="this.style.borderColor='rgba(255,255,255,.1)'">
+          </div>
+          <div>
+            <label style="font-size:.72rem;font-weight:600;color:rgba(255,255,255,.4);display:block;margin-bottom:.3rem">E-post *</label>
+            <input name="email" required type="email" placeholder="erik@lindbergindustri.se" style="width:100%;background:#091224;border:1px solid rgba(255,255,255,.1);border-radius:7px;padding:.6rem .85rem;color:#fff;font-size:.85rem;font-family:inherit;outline:none" onfocus="this.style.borderColor='rgba(59,130,246,.5)'" onblur="this.style.borderColor='rgba(255,255,255,.1)'">
+          </div>
+          <div>
+            <label style="font-size:.72rem;font-weight:600;color:rgba(255,255,255,.4);display:block;margin-bottom:.3rem">Affärssystem</label>
+            <select name="erp" style="width:100%;background:#091224;border:1px solid rgba(255,255,255,.1);border-radius:7px;padding:.6rem .85rem;color:rgba(255,255,255,.7);font-size:.85rem;font-family:inherit;outline:none;appearance:none">
+              <option value="">Välj affärssystem...</option>
+              <option>Visma</option>
+              <option>Business Central</option>
+              <option>Monitor ERP</option>
+              <option>Pyramid</option>
+              <option>Jeeves</option>
+              <option>Fortnox</option>
+              <option>SAP</option>
+              <option>Annat</option>
+            </select>
+          </div>
+          <div>
+            <label style="font-size:.72rem;font-weight:600;color:rgba(255,255,255,.4);display:block;margin-bottom:.3rem">Ungefär antal artiklar i lagret</label>
+            <select name="artiklar" style="width:100%;background:#091224;border:1px solid rgba(255,255,255,.1);border-radius:7px;padding:.6rem .85rem;color:rgba(255,255,255,.7);font-size:.85rem;font-family:inherit;outline:none;appearance:none">
+              <option value="">Välj storlek...</option>
+              <option>Under 500 artiklar</option>
+              <option>500–2 000 artiklar</option>
+              <option>2 000–5 000 artiklar</option>
+              <option>Över 5 000 artiklar</option>
+            </select>
+          </div>
+          <button type="submit" class="btn-primary" style="width:100%;justify-content:center;margin-top:.25rem;padding:.8rem">Ansök om tillgång →</button>
+        </form>
+        <div id="form-success" style="display:none;text-align:center;padding:2rem 0">
+          <div style="font-size:2rem;margin-bottom:.75rem">✅</div>
+          <div style="font-weight:800;color:#fff;margin-bottom:.4rem">Ansökan mottagen!</div>
+          <div style="font-size:.83rem;color:rgba(255,255,255,.45)">Vi hör av oss inom 24 timmar.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════ FAQ ══════════════════════ -->
+<div class="section-white" id="faq">
+  <div class="section">
+    <div class="eyebrow" style="color:var(--blue)">Vanliga frågor</div>
+    <h2>Det du undrar innan du testar</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Hur snabbt kan vi få vår första analys? <span class="faq-chevron">▼</span></div>
+        <div class="faq-a">På under 60 sekunder efter att ni laddat upp er artikelexport. Ingen installation, ingen IT-avdelning, ingen väntetid. Exportera från ert affärssystem, ladda upp i Logitide — klart.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Påverkar Logitide vår befintliga ERP-databas? <span class="faq-chevron">▼</span></div>
+        <div class="faq-a">Nej, överhuvudtaget inte. Logitide läser er Excel-export och analyserar den — vi skriver aldrig tillbaka till ert system. Er data är er data.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Vad krävs av mig som lagerchef under testet? <span class="faq-chevron">▼</span></div>
+        <div class="faq-a">En Excel-export ur ert affärssystem med artikelnummer, lagersaldo och förbrukning. Det tar vanligtvis under 5 minuter att ta ut. Vi hjälper er om ni fastnar.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Hur sätts priset efter piloten? <span class="faq-chevron">▼</span></div>
+        <div class="faq-a">Vi sätter pris tillsammans med er — baserat på vilket konkret värde systemet levererat under piloten. Minskat överlager i kronor, färre brister, inbesparad tid. Ingen bindningstid.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">Fungerar det med vårt affärssystem? <span class="faq-chevron">▼</span></div>
+        <div class="faq-a">Ja. Logitide läser Excel-filer, vilket alla affärssystem kan exportera — Visma, Business Central, SAP, Monitor ERP, Fortnox, Pyramid, Jeeves och alla andra. Om ni kan exportera till Excel fungerar Logitide.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════ FINAL CTA ══════════════════════ -->
+<div class="final-cta">
+  <div style="max-width:620px;margin:0 auto">
+    <h2>Redo att se hur ditt<br><span>lager ser ut i Logitide?</span></h2>
+    <p>Vi tar emot ett begränsat antal kunder åt gången. Ansök nedan — vi hör av oss inom 24 timmar.</p>
+    <div class="final-btns">
+      <a href="#pilot" class="btn-primary-dark">Ansök om tillgång →</a>
+      <a href="#apply" class="btn-outline">⚡ Se en snabb demo</a>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════ FOOTER ══════════════════════ -->
+<footer>
+  <div class="logo">
+    <div class="logo-icon">
+      <svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:#fff;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+    </div>
+    <span class="logo-name" style="font-size:.9rem">Logitide</span>
+    <span style="font-size:.78rem;color:rgba(255,255,255,.25);margin-left:6px">— Lageroptimering för svenska industrilager</span>
+  </div>
+  <div style="display:flex;gap:1.5rem;align-items:center">
+    <a href="mailto:info@logitide.se">info@logitide.se</a>
+    <a href="https://logitide-frontend.vercel.app">Öppna appen</a>
+  </div>
+</footer>
+
+<script>
+function toggleFaq(el) {
+  const item = el.parentElement;
+  const wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!wasOpen) item.classList.add('open');
+}
+function handleFormSubmit(e) {
+  e.preventDefault();
+  const form = e.target;
+  const data = new FormData(form);
+  fetch(form.action, {
+    method: 'POST',
+    body: data,
+    headers: { 'Accept': 'application/json' }
+  }).then(r => {
+    form.style.display = 'none';
+    document.getElementById('form-success').style.display = 'block';
+  }).catch(() => {
+    // fallback — öppna mailto om fetch misslyckas
+    window.location.href = 'mailto:info@logitide.se?subject=Ansökan om tillgång till Logitide';
+  });
+}
+</script>
