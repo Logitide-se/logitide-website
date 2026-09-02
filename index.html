@@ -1,771 +1,1040 @@
-<title>Logitide</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
 
+<!-- saved from url=(0053)file:///C:/Users/marko/Downloads/logitidewebsite.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Logitide — Lageroptimering utan ERP-projekt</title>
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:'Inter',sans-serif;color:#0f172a;line-height:1.6;overflow-x:hidden;font-size:16px}
-a{text-decoration:none;color:inherit}
-button{font-family:inherit;cursor:pointer;border:none}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
-/* ── TOKENS ── */
-:root{
-  --navy:#0a1628;
-  --navy2:#0e1f3d;
-  --blue:#2563eb;
-  --blue2:#3b82f6;
-  --blue-light:#eff6ff;
-  --green:#16a34a;
-  --red:#dc2626;
-  --amber:#d97706;
-  --purple:#7c3aed;
-  --ink:#0f172a;
-  --ink2:#1e293b;
-  --muted:#64748b;
-  --border:#e2e8f0;
-  --surface:#f8fafc;
-  --white:#ffffff;
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:   #0B1220;
+  --navy2:  #0F1A2E;
+  --navy3:  #152136;
+  --blue:   #2563EB;
+  --blue2:  #1D4ED8;
+  --blue-l: #3B82F6;
+  --green:  #16A34A;
+  --green-l:#22C55E;
+  --amber:  #D97706;
+  --red:    #DC2626;
+  --purple: #7C3AED;
+  --white:  #FFFFFF;
+  --gray50: #F9FAFB;
+  --gray100:#F3F4F6;
+  --gray200:#E5E7EB;
+  --gray400:#9CA3AF;
+  --gray500:#6B7280;
+  --gray700:#374151;
+  --gray900:#111827;
+  --text-dark: #111827;
+  --text-mid: #374151;
+  --text-soft: #6B7280;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.06);
+  --shadow-md: 0 4px 16px rgba(0,0,0,.08), 0 2px 6px rgba(0,0,0,.05);
+  --shadow-lg: 0 10px 40px rgba(0,0,0,.12), 0 4px 12px rgba(0,0,0,.06);
 }
 
-/* ── NAV ── */
-nav{
-  position:sticky;top:0;z-index:100;
-  background:var(--navy);
-  border-bottom:1px solid rgba(255,255,255,0.08);
-  backdrop-filter:blur(12px);
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-size: 15px; line-height: 1.6;
+  color: var(--text-dark);
+  background: var(--white);
+  -webkit-font-smoothing: antialiased;
 }
-.nav-inner{
-  max-width:1180px;margin:0 auto;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:0 2rem;height:58px;
-}
-.logo{display:flex;align-items:center;gap:9px}
-.logo-icon{
-  width:30px;height:30px;border-radius:8px;
-  background:linear-gradient(135deg,#1d4ed8,#3b82f6);
-  display:flex;align-items:center;justify-content:center;flex-shrink:0;
-}
-.logo-icon svg{width:15px;height:15px;stroke:#fff;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
-.logo-name{font-size:1.05rem;font-weight:800;color:#fff;letter-spacing:-.02em}
-.logo-beta{font-size:.62rem;font-weight:700;color:var(--blue2);background:rgba(59,130,246,.15);border:1px solid rgba(59,130,246,.3);border-radius:4px;padding:1px 6px;letter-spacing:.05em}
-.nav-links{display:flex;gap:2rem}
-.nav-links a{font-size:.85rem;font-weight:500;color:rgba(255,255,255,.55);transition:color .15s}
-.nav-links a:hover{color:#fff}
-.nav-cta{background:var(--blue);color:#fff;padding:.45rem 1.2rem;border-radius:7px;font-size:.85rem;font-weight:600;transition:background .15s}
-.nav-cta:hover{background:#1d4ed8}
 
-/* ── HERO ── */
-.hero{
-  background:var(--navy);
-  padding:5rem 2rem 4.5rem;
+/* ─── NAV ─── */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  height: 64px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 48px;
+  background: rgba(11,18,32,0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
 }
-.hero-inner{
-  max-width:1180px;margin:0 auto;
-  display:grid;grid-template-columns:1fr 480px;gap:4rem;align-items:center;
+.nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.nav-logo {
+  width: 32px; height: 32px; border-radius: 8px;
+  background: linear-gradient(135deg, #2563EB, #1D4ED8);
+  display: flex; align-items: center; justify-content: center;
 }
-.hero-eyebrow{
-  display:inline-flex;align-items:center;gap:7px;
-  font-size:.73rem;font-weight:600;letter-spacing:.07em;color:rgba(255,255,255,.5);
-  border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:4px 12px;margin-bottom:1.5rem;
+.nav-logo svg { width: 17px; height: 17px; color: white; }
+.nav-wordmark { color: white; font-size: 16px; font-weight: 700; letter-spacing: -0.025em; }
+.nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+.nav-links a { color: rgba(255,255,255,0.6); font-size: 14px; font-weight: 500; text-decoration: none; transition: color .15s; }
+.nav-links a:hover { color: white; }
+.btn-nav {
+  background: var(--blue); color: white;
+  padding: 9px 20px; border-radius: 8px; font-weight: 600;
+  font-size: 14px; text-decoration: none; transition: background .15s, transform .1s;
+  white-space: nowrap;
 }
-.hero-dot{width:6px;height:6px;border-radius:50%;background:#22c55e;display:inline-block;box-shadow:0 0 6px #22c55e}
-.hero h1{
-  font-size:3rem;font-weight:900;line-height:1.1;letter-spacing:-.03em;
-  color:#fff;margin-bottom:1.25rem;
-}
-.hero h1 .accent{color:var(--blue2)}
-.hero-sub{font-size:1rem;color:rgba(255,255,255,.55);line-height:1.75;max-width:480px;margin-bottom:2rem}
-.hero-btns{display:flex;gap:.75rem;flex-wrap:wrap;margin-bottom:2.5rem}
-.btn-primary{
-  display:inline-flex;align-items:center;gap:7px;
-  background:var(--blue);color:#fff;padding:.72rem 1.5rem;
-  border-radius:8px;font-weight:700;font-size:.9rem;
-  transition:all .15s;border:none;cursor:pointer;
-}
-.btn-primary:hover{background:#1d4ed8;box-shadow:0 0 28px rgba(37,99,235,.4);transform:translateY(-1px)}
-.btn-ghost{
-  display:inline-flex;align-items:center;gap:7px;
-  color:rgba(255,255,255,.7);padding:.72rem 1.5rem;
-  border-radius:8px;font-weight:600;font-size:.9rem;
-  border:1px solid rgba(255,255,255,.15);transition:all .15s;cursor:pointer;background:transparent;
-}
-.btn-ghost:hover{border-color:rgba(255,255,255,.35);color:#fff;background:rgba(255,255,255,.05)}
-.hero-stats{display:flex;gap:2.5rem}
-.stat-val{font-size:1.6rem;font-weight:900;color:#fff;letter-spacing:-.02em;line-height:1}
-.stat-val sup{font-size:.7rem;font-weight:500;color:rgba(255,255,255,.4)}
-.stat-lbl{font-size:.73rem;color:rgba(255,255,255,.4);margin-top:3px}
+.btn-nav:hover { background: var(--blue2); transform: translateY(-1px); }
 
-/* ── MOCKUP ── */
-.mockup{
-  background:#0e1f3d;
-  border:1px solid rgba(255,255,255,.1);
-  border-radius:14px;
-  box-shadow:0 32px 80px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.04);
-  overflow:hidden;
-  font-size:12px;
+/* ─── TICKER ─── */
+.ticker {
+  background: var(--navy2); border-bottom: 1px solid rgba(255,255,255,0.05);
+  height: 36px; overflow: hidden; display: flex; align-items: center;
 }
-.mockup-bar{
-  background:#091224;border-bottom:1px solid rgba(255,255,255,.07);
-  padding:9px 14px;display:flex;align-items:center;gap:6px;
+.ticker-inner { display: flex; white-space: nowrap; animation: tick 32s linear infinite; }
+.ticker-item {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 0 32px; font-size: 12px; color: rgba(255,255,255,0.45); font-weight: 500;
 }
-.mdot{width:10px;height:10px;border-radius:50%}
-.mockup-url{font-size:.65rem;color:#334155;margin-left:6px}
-.mkpi{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;padding:11px 13px 10px}
-.mkpi-card{background:#091224;border:1px solid rgba(255,255,255,.07);border-radius:7px;padding:8px 10px}
-.mkpi-lbl{font-size:.58rem;font-weight:700;letter-spacing:.07em;color:#475569;text-transform:uppercase;margin-bottom:3px}
-.mkpi-val{font-size:1.05rem;font-weight:900;line-height:1}
-.mabc{padding:0 13px 10px}
-.mabc-lbl{font-size:.6rem;font-weight:700;letter-spacing:.07em;color:#334155;margin-bottom:6px}
-.mbar-row{display:flex;align-items:center;gap:7px;margin-bottom:4px;font-size:.63rem}
-.mbar-track{flex:1;height:4px;background:#091224;border-radius:2px;overflow:hidden}
-.mbar-fill{height:100%;border-radius:2px}
-.mbar-name{color:#64748b;width:44px}
-.mbar-pct{color:#475569;width:24px;text-align:right}
-.mactions{padding:0 13px 12px}
-.mact-lbl{font-size:.6rem;font-weight:700;letter-spacing:.07em;color:#334155;margin-bottom:5px}
-.mact-row{display:flex;align-items:center;justify-content:space-between;padding:5px 0;border-top:1px solid rgba(255,255,255,.04)}
-.mact-name{display:flex;align-items:center;gap:6px;font-size:.67rem;color:#94a3b8}
-.mact-bar{width:3px;height:14px;border-radius:2px;flex-shrink:0}
-.mact-chip{font-size:.57rem;font-weight:700;border-radius:4px;padding:2px 6px}
+.ticker-check { color: var(--green-l); }
+@keyframes tick { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
 
-/* ── TICKER ── */
-.ticker{
-  background:#fff;
-  border-top:1px solid var(--border);
-  border-bottom:1px solid var(--border);
-  overflow:hidden;padding:0;
+/* ─── HERO (dark) ─── */
+.hero {
+  background: var(--navy);
+  padding: 88px 48px 80px;
 }
-.ticker-track{display:flex;gap:0;animation:tick 30s linear infinite;width:max-content}
-@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.ticker-inner{display:flex;align-items:center;height:44px}
-.ticker-item{
-  display:flex;align-items:center;gap:.5rem;
-  font-size:.78rem;font-weight:600;color:#94a3b8;
-  padding:0 1.75rem;border-right:1px solid var(--border);white-space:nowrap;
+.hero-inner {
+  max-width: 1120px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 480px; gap: 72px; align-items: center;
 }
-.ticker-item::before{content:'✓';color:#22c55e;font-size:.8rem}
+.hero-pill {
+  display: inline-flex; align-items: center; gap: 7px;
+  background: rgba(34,197,94,0.08); border: 1px solid rgba(34,197,94,0.2);
+  border-radius: 99px; padding: 5px 14px;
+  font-size: 12.5px; color: #4ADE80; font-weight: 500; margin-bottom: 24px;
+}
+.hero-pill-dot { width: 6px; height: 6px; border-radius: 50%; background: #4ADE80; animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
 
-/* ── KPI STRIP ── */
-.kpi-strip{
-  background:#fff;
-  border-bottom:1px solid var(--border);
+h1 {
+  font-size: clamp(36px, 4.5vw, 56px);
+  font-weight: 700; line-height: 1.1; letter-spacing: -0.03em;
+  color: white; margin-bottom: 20px;
 }
-.kpi-strip-inner{
-  max-width:1180px;margin:0 auto;
-  display:grid;grid-template-columns:repeat(4,1fr);
-}
-.kstrip-item{
-  padding:2rem 2.5rem;border-right:1px solid var(--border);
-  text-align:center;
-}
-.kstrip-item:last-child{border-right:none}
-.kstrip-val{font-size:2.2rem;font-weight:900;letter-spacing:-.03em;line-height:1}
-.kstrip-sub{font-size:.78rem;color:var(--muted);margin-top:.35rem;line-height:1.4}
+h1 em { font-style: normal; color: #60A5FA; }
 
-/* ── SECTION BASE ── */
-.section{padding:5rem 2rem;max-width:1180px;margin:0 auto}
-.section-dark{background:var(--navy);color:#fff}
-.section-white{background:#fff}
-.section-surface{background:var(--surface)}
-.eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.6rem}
-.section h2{font-size:2.1rem;font-weight:900;letter-spacing:-.03em;line-height:1.2;margin-bottom:.75rem}
-.section-lead{font-size:.95rem;color:var(--muted);max-width:560px;line-height:1.75}
+.hero-sub {
+  font-size: 17px; color: rgba(255,255,255,0.55); line-height: 1.65;
+  max-width: 440px; margin-bottom: 28px;
+}
+.hero-erp-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.25);
+  border-radius: 8px; padding: 8px 14px;
+  font-size: 13px; color: #93C5FD; font-weight: 500; margin-bottom: 32px;
+}
+.hero-erp-tag span { color: #4ADE80; }
+.hero-btns { display: flex; align-items: center; gap: 12px; margin-bottom: 48px; }
+.btn-primary {
+  background: var(--blue); color: white;
+  padding: 13px 28px; border-radius: 9px; font-weight: 600;
+  font-size: 15px; text-decoration: none; transition: background .15s, transform .1s;
+  white-space: nowrap;
+}
+.btn-primary:hover { background: var(--blue2); transform: translateY(-1px); }
+.btn-ghost {
+  display: flex; align-items: center; gap: 8px;
+  background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.75); padding: 13px 22px; border-radius: 9px;
+  font-weight: 500; font-size: 15px; text-decoration: none; transition: background .15s;
+  white-space: nowrap;
+}
+.btn-ghost:hover { background: rgba(255,255,255,0.12); }
+.hero-kpis { display: flex; gap: 0; border-top: 1px solid rgba(255,255,255,0.07); padding-top: 32px; }
+.kpi { flex: 1; }
+.kpi + .kpi { border-left: 1px solid rgba(255,255,255,0.07); padding-left: 32px; }
+.kpi-num { font-size: 32px; font-weight: 700; color: white; letter-spacing: -0.03em; line-height: 1; }
+.kpi-num sup { font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.5); }
+.kpi-label { font-size: 12.5px; color: rgba(255,255,255,0.4); margin-top: 4px; }
 
-/* ── TRAPS (pain cards with "before/after") ── */
-.traps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2.5rem}
-.trap-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:1.5rem;box-shadow:0 1px 4px rgba(0,0,0,.04)}
-.trap-icon{font-size:1.75rem;margin-bottom:1rem}
-.trap-tag{font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.5rem}
-.trap-card h3{font-size:1rem;font-weight:800;color:var(--ink);margin-bottom:.5rem;line-height:1.3}
-.trap-scenario{font-size:.8rem;color:var(--muted);line-height:1.6;margin-bottom:.875rem}
-.trap-solution{background:var(--surface);border-radius:8px;padding:.75rem 1rem;border-left:3px solid}
-.trap-solution-lbl{font-size:.65rem;font-weight:700;letter-spacing:.07em;margin-bottom:.3rem}
-.trap-solution p{font-size:.8rem;line-height:1.55}
+/* App mockup */
+.mockup {
+  background: #0F1E35; border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.08);
+  overflow: hidden; box-shadow: 0 24px 80px rgba(0,0,0,0.5);
+}
+.mockup-bar {
+  background: #162338; padding: 12px 16px;
+  display: flex; align-items: center; gap: 8px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.dot { width: 10px; height: 10px; border-radius: 50%; }
+.dot-r { background: #FF5F57; } .dot-y { background: #FFBD2E; } .dot-g { background: #28C840; }
+.mockup-title { font-size: 12px; color: rgba(255,255,255,0.35); margin-left: 8px; font-weight: 500; }
+.mockup-body { padding: 16px; }
+.kpi-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; margin-bottom: 14px; }
+.kpi-tile {
+  background: #162338; border-radius: 8px; padding: 12px 10px;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+.kpi-tile-label { font-size: 9px; color: rgba(255,255,255,0.3); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; }
+.kpi-tile-val { font-size: 15px; font-weight: 700; line-height: 1; }
+.v-blue { color: #60A5FA; } .v-red { color: #F87171; } .v-amber { color: #FBBF24; } .v-green { color: #4ADE80; }
+.abc-section { background: #162338; border-radius: 8px; padding: 12px; margin-bottom: 10px; border: 1px solid rgba(255,255,255,0.05); }
+.abc-title { font-size: 9px; color: rgba(255,255,255,0.3); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 10px; }
+.abc-row { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+.abc-row:last-child { margin-bottom: 0; }
+.abc-lbl { font-size: 11px; color: rgba(255,255,255,0.4); width: 10px; }
+.abc-bar-bg { flex: 1; height: 5px; background: rgba(255,255,255,0.06); border-radius: 99px; }
+.abc-bar { height: 5px; border-radius: 99px; }
+.actions-title { font-size: 9px; color: rgba(255,255,255,0.3); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; }
+.action-row {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 8px 10px; background: #162338; border-radius: 6px; margin-bottom: 5px;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+.action-row:last-child { margin-bottom: 0; }
+.action-dot { width: 6px; height: 6px; border-radius: 50%; margin-right: 8px; flex-shrink: 0; }
+.action-text { font-size: 11.5px; color: rgba(255,255,255,0.65); flex: 1; }
+.badge { font-size: 9px; font-weight: 700; padding: 3px 7px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.06em; }
+.badge-red { background: rgba(239,68,68,0.15); color: #F87171; }
+.badge-amber { background: rgba(245,158,11,0.15); color: #FBBF24; }
+.badge-blue { background: rgba(59,130,246,0.15); color: #93C5FD; }
 
-/* ── JOURNEY ── */
-.journey{max-width:800px;margin:2.5rem auto 0}
-.journey-line{display:flex;align-items:flex-start;gap:0;position:relative}
-.journey-track{
-  display:flex;justify-content:space-between;align-items:flex-start;
-  position:relative;gap:0;
+/* ─── GARANTI BANNER (NY — direkt under hero) ─── */
+.guarantee-banner {
+  background: linear-gradient(135deg, #0f2a0f 0%, #0a1f1a 100%);
+  border-bottom: 1px solid rgba(34,197,94,0.2);
+  padding: 20px 48px;
 }
-.journey-track::before{
-  content:'';position:absolute;top:20px;left:calc(16.6%);right:calc(16.6%);
-  height:2px;background:linear-gradient(90deg,#22c55e,#2563eb,#1e293b);
+.guarantee-banner-inner {
+  max-width: 1120px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: center; gap: 16px;
+  flex-wrap: wrap; text-align: center;
 }
-.journey-step{flex:1;text-align:center;padding:0 .5rem}
-.journey-node{
-  width:40px;height:40px;border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  font-size:.9rem;font-weight:900;color:#fff;margin:0 auto 1rem;
-  position:relative;z-index:1;
-}
-.journey-tag{font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.35rem}
-.journey-step h3{font-size:.95rem;font-weight:800;color:var(--ink);margin-bottom:.35rem}
-.journey-step p{font-size:.8rem;color:var(--muted);line-height:1.6}
-.journey-note{font-size:.75rem;font-style:italic;color:var(--blue);margin-top:.5rem}
+.guarantee-icon { font-size: 22px; flex-shrink: 0; }
+.guarantee-text { font-size: 14px; color: rgba(255,255,255,0.75); line-height: 1.5; }
+.guarantee-text strong { color: #4ADE80; }
 
-/* ── FEATURES ── */
-.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2.5rem;grid-auto-rows:1fr}
-.feat-card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:1.5rem;transition:box-shadow .2s,border-color .2s}
-.feat-card:hover{box-shadow:0 8px 32px rgba(0,0,0,.08);border-color:#cbd5e1}
-.feat-card.coming{opacity:.55}
-.feat-icon{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem}
-.feat-tag{font-size:.64rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;margin-bottom:.35rem}
-.feat-card h3{font-size:.95rem;font-weight:800;color:var(--ink);margin-bottom:.35rem}
-.feat-card p{font-size:.8rem;color:var(--muted);line-height:1.6}
-.feat-soon{font-size:.65rem;font-weight:700;color:var(--muted);background:var(--surface);border-radius:4px;padding:1px 6px;margin-left:6px;border:1px solid var(--border)}
+/* ─── COMPAT STRIP (light) ─── */
+.compat {
+  background: white; border-bottom: 1px solid var(--gray200);
+  padding: 18px 48px; overflow: hidden;
+}
+.compat-inner { max-width: 1120px; margin: 0 auto; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.compat-label { font-size: 13px; color: var(--text-soft); font-weight: 500; white-space: nowrap; }
+.compat-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.compat-tag {
+  display: flex; align-items: center; gap: 5px;
+  font-size: 13px; color: var(--text-mid); font-weight: 500;
+}
+.compat-tag-check { color: var(--green); font-weight: 700; }
 
-/* ── PARTNERSHIP ── */
-.partner-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2rem}
-.partner-card{background:#0e1f3d;border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:1.5rem}
-.partner-card-wide{grid-column:span 1}
-.partner-icon{font-size:1.5rem;margin-bottom:.875rem}
-.partner-card h3{font-size:.95rem;font-weight:800;color:#fff;margin-bottom:.4rem}
-.partner-card p{font-size:.8rem;color:rgba(255,255,255,.45);line-height:1.65}
-.partner-philosophy{
-  grid-column:span 3;
-  background:rgba(37,99,235,.12);border:1px solid rgba(59,130,246,.25);
-  border-radius:12px;padding:1.25rem 1.5rem;
-  font-size:.85rem;color:rgba(255,255,255,.7);line-height:1.7;
-  margin-top:.25rem;
+/* ─── SECTION BASE ─── */
+.section { padding: 96px 48px; }
+.section-light { background: white; }
+.section-gray { background: var(--gray50); }
+.section-dark { background: var(--navy); }
+.inner { max-width: 1120px; margin: 0 auto; }
+.eyebrow {
+  font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--blue); margin-bottom: 12px;
 }
-.partner-philosophy strong{color:#fff}
+.eyebrow-light { color: #60A5FA; }
+h2 { font-size: clamp(26px, 3vw, 36px); font-weight: 700; letter-spacing: -0.025em; color: var(--text-dark); line-height: 1.2; margin-bottom: 12px; }
+h2.light { color: white; }
+.section-sub { font-size: 16px; color: var(--text-soft); max-width: 520px; line-height: 1.6; margin-bottom: 56px; }
+.section-sub.light { color: rgba(255,255,255,0.5); }
 
-/* ── PRICING ── */
-.pricing-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:1.25rem;max-width:860px;margin:2.5rem auto 0}
-.price-card{
-  background:#0e1f3d;border:1px solid rgba(255,255,255,.1);
-  border-radius:14px;padding:2rem;
+/* ─── PROBLEM CARDS ─── */
+.problem-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+.problem-card {
+  background: white; border: 1px solid var(--gray200); border-radius: 12px;
+  padding: 28px; box-shadow: var(--shadow-sm);
 }
-.price-card.featured{
-  background:#fff;border:2px solid var(--blue);
-  box-shadow:0 16px 48px rgba(37,99,235,.2);
+.problem-type {
+  font-size: 10.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  margin-bottom: 10px;
 }
-.price-tag{font-size:.65rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;margin-bottom:.5rem}
-.price-label{font-size:.9rem;font-weight:700;margin-bottom:.25rem}
-.price-val{font-size:3rem;font-weight:900;letter-spacing:-.03em;line-height:1;margin-bottom:.25rem}
-.price-note{font-size:.75rem;margin-bottom:1.25rem}
-.price-features{list-style:none;display:flex;flex-direction:column;gap:.5rem;margin-bottom:1.5rem}
-.price-features li{font-size:.83rem;display:flex;align-items:flex-start;gap:.6rem;line-height:1.5}
-.price-features li::before{content:'✓';font-weight:700;flex-shrink:0;margin-top:.1rem}
-.price-badge{
-  display:inline-flex;align-items:center;gap:5px;
-  font-size:.7rem;font-weight:700;
-  background:rgba(37,99,235,.1);color:var(--blue);
-  border-radius:5px;padding:2px 8px;margin-left:auto;
-  border:1px solid rgba(37,99,235,.2);
+.type-red { color: var(--red); }
+.type-amber { color: var(--amber); }
+.type-purple { color: var(--purple); }
+.problem-card h3 { font-size: 17px; font-weight: 700; color: var(--text-dark); line-height: 1.3; margin-bottom: 10px; }
+.problem-card p { font-size: 13.5px; color: var(--text-soft); line-height: 1.55; margin-bottom: 20px; }
+.logitide-solution {
+  background: var(--gray50); border-radius: 8px; padding: 14px;
+  border-left: 3px solid;
 }
-.price-card-dark .price-tag{color:rgba(255,255,255,.4)}
-.price-card-dark .price-label{color:rgba(255,255,255,.7)}
-.price-card-dark .price-val{color:#fff}
-.price-card-dark .price-note{color:rgba(255,255,255,.35)}
-.price-card-dark .price-features li{color:rgba(255,255,255,.6)}
-.price-card-dark .price-features li::before{color:rgba(255,255,255,.3)}
-.price-card-dark .btn-dark{background:rgba(255,255,255,.08);color:rgba(255,255,255,.7);padding:.7rem 1.5rem;border-radius:8px;font-weight:600;font-size:.9rem;width:100%;text-align:center;display:block;border:1px solid rgba(255,255,255,.1);cursor:pointer}
-.price-card.featured .price-tag{color:var(--blue)}
-.price-card.featured .price-label{color:var(--ink2)}
-.price-card.featured .price-val{color:var(--ink)}
-.price-card.featured .price-note{color:var(--muted)}
-.price-card.featured .price-features li{color:var(--ink2)}
-.price-card.featured .price-features li::before{color:var(--green)}
-.pricing-footer{text-align:center;font-size:.78rem;color:rgba(255,255,255,.35);margin-top:1.25rem}
+.sol-red { border-color: var(--red); }
+.sol-amber { border-color: var(--amber); }
+.sol-purple { border-color: var(--purple); }
+.sol-label {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.sol-label-red { color: var(--red); }
+.sol-label-amber { color: var(--amber); }
+.logitide-solution p { font-size: 13px; color: var(--text-mid); margin-bottom: 0; }
 
-/* ── FAQ ── */
-.faq-list{max-width:720px;margin:2.5rem auto 0}
-.faq-item{border-bottom:1px solid var(--border)}
-.faq-q{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:1.1rem 0;cursor:pointer;
-  font-size:.95rem;font-weight:600;color:var(--ink);gap:1rem;
-  user-select:none;
+/* ─── HOW (steps) ─── */
+.steps-track {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  position: relative; gap: 40px;
 }
-.faq-q:hover{color:var(--blue)}
-.faq-chevron{color:var(--muted);font-size:.75rem;transition:transform .2s;flex-shrink:0}
-.faq-a{display:none;padding-bottom:1rem;font-size:.875rem;color:var(--muted);line-height:1.75}
-.faq-item.open .faq-a{display:block}
-.faq-item.open .faq-chevron{transform:rotate(180deg)}
+.steps-track::before {
+  content: '';
+  position: absolute; top: 20px; left: 10%; right: 10%;
+  height: 2px;
+  background: linear-gradient(90deg, #16A34A 0%, var(--blue) 50%, #374151 100%);
+}
+.step { text-align: center; }
+.step-num {
+  width: 42px; height: 42px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px; font-weight: 700; color: white;
+  margin: 0 auto 20px; position: relative; z-index: 1;
+}
+.step-num-1 { background: #16A34A; }
+.step-num-2 { background: var(--blue); }
+.step-num-3 { background: #374151; }
+.step-tag { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-soft); margin-bottom: 8px; }
+.step h3 { font-size: 18px; font-weight: 700; color: var(--text-dark); margin-bottom: 10px; letter-spacing: -0.015em; }
+.step p { font-size: 13.5px; color: var(--text-soft); line-height: 1.6; }
 
-/* ── FINAL CTA ── */
-.final-cta{
-  background:var(--surface);border-top:1px solid var(--border);
-  padding:5rem 2rem;text-align:center;
+/* ─── MONTHLY CYCLE ─── */
+.cycle-wrap {
+  margin-top: 64px;
+  border-top: 1px solid var(--gray200);
+  padding-top: 56px;
 }
-.final-cta h2{font-size:2.25rem;font-weight:900;letter-spacing:-.03em;color:var(--ink);margin-bottom:.6rem}
-.final-cta h2 span{color:var(--blue)}
-.final-cta p{font-size:.93rem;color:var(--muted);margin-bottom:2rem}
-.final-btns{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap}
-.btn-primary-dark{
-  display:inline-flex;align-items:center;gap:7px;
-  background:var(--blue);color:#fff;padding:.75rem 1.75rem;
-  border-radius:8px;font-weight:700;font-size:.95rem;
-  transition:all .15s;cursor:pointer;border:none;
+.cycle-label {
+  text-align: center;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--blue); margin-bottom: 10px;
 }
-.btn-primary-dark:hover{background:#1d4ed8;box-shadow:0 0 28px rgba(37,99,235,.35);transform:translateY(-1px)}
-.btn-outline{
-  display:inline-flex;align-items:center;gap:7px;
-  color:var(--ink2);padding:.75rem 1.75rem;
-  border-radius:8px;font-weight:600;font-size:.95rem;
-  border:1px solid var(--border);transition:all .15s;cursor:pointer;background:#fff;
+.cycle-title {
+  text-align: center;
+  font-size: 22px; font-weight: 700; color: var(--text-dark);
+  letter-spacing: -0.02em; margin-bottom: 8px;
 }
-.btn-outline:hover{border-color:#94a3b8}
+.cycle-sub {
+  text-align: center;
+  font-size: 14px; color: var(--text-soft); margin-bottom: 48px;
+}
+.cycle-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 0; position: relative;
+}
+.cycle-grid::before {
+  content: '';
+  position: absolute; top: 28px; left: calc(12.5% + 8px); right: calc(12.5% + 8px);
+  height: 2px; background: linear-gradient(90deg, #2563EB22, #2563EB, #2563EB22);
+  z-index: 0;
+}
+.cycle-step {
+  display: flex; flex-direction: column; align-items: center;
+  text-align: center; padding: 0 16px; position: relative; z-index: 1;
+}
+.cycle-dot {
+  width: 56px; height: 56px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; margin-bottom: 18px;
+  border: 2px solid var(--gray200);
+  background: white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.cycle-week {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--blue); margin-bottom: 6px;
+}
+.cycle-step h4 {
+  font-size: 15px; font-weight: 700; color: var(--text-dark);
+  margin-bottom: 8px; letter-spacing: -0.01em;
+}
+.cycle-step p {
+  font-size: 13px; color: var(--text-soft); line-height: 1.6;
+}
 
-/* ── FOOTER ── */
-footer{
-  background:var(--navy);
-  border-top:1px solid rgba(255,255,255,.07);
-  padding:1.75rem 2rem;
-  display:flex;align-items:center;justify-content:space-between;
+/* ─── MODULES ─── */
+.modules-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+.module-card {
+  background: white; border: 1px solid var(--gray200); border-radius: 12px;
+  padding: 24px; box-shadow: var(--shadow-sm); transition: box-shadow .2s, transform .2s;
 }
-footer p{font-size:.78rem;color:rgba(255,255,255,.25)}
-footer a{font-size:.78rem;color:rgba(255,255,255,.4);transition:color .15s}
-footer a:hover{color:#fff}
+.module-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.module-icon { font-size: 26px; margin-bottom: 14px; }
+.module-card h3 { font-size: 16px; font-weight: 700; color: var(--text-dark); margin-bottom: 8px; }
+.module-card p { font-size: 13.5px; color: var(--text-soft); line-height: 1.55; }
 
-/* ── RESPONSIVE ── */
-@media(max-width:900px){
-  .hero-inner{grid-template-columns:1fr;gap:2.5rem}
-  .mockup{display:none}
-  .hero h1{font-size:2.25rem}
-  .kpi-strip-inner{grid-template-columns:repeat(2,1fr)}
-  .kstrip-item:nth-child(2){border-right:none}
-  .traps-grid,.feat-grid,.partner-grid,.pricing-grid{grid-template-columns:1fr}
-  .partner-philosophy{grid-column:span 1}
-  .nav-links{display:none}
-  .journey-track::before{display:none}
-  nav,.hero,.section,.final-cta,.kpi-strip-inner{padding-left:1.25rem;padding-right:1.25rem}
+/* ─── STATS BLOCK ─── */
+.stats-block {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 2px; border-radius: 20px; overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.stat-col {
+  padding: 52px 44px;
+  display: flex; flex-direction: column; align-items: flex-start;
+  position: relative;
+}
+.stat-col:nth-child(1) { background: var(--navy3); }
+.stat-col:nth-child(2) { background: #101828; }
+.stat-col:nth-child(3) {
+  background: linear-gradient(135deg, #1D4ED8 0%, #1e3a8a 100%);
+}
+.stat-col::after {
+  content: '';
+  position: absolute; top: 20%; right: 0; bottom: 20%;
+  width: 1px; background: rgba(255,255,255,0.06);
+}
+.stat-col:last-child::after { display: none; }
+.stat-eyebrow {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; margin-bottom: 20px;
+  color: rgba(255,255,255,0.35);
+}
+.stat-col:nth-child(3) .stat-eyebrow { color: rgba(255,255,255,0.55); }
+.stat-num {
+  font-size: 56px; font-weight: 800; letter-spacing: -0.04em;
+  line-height: 1; margin-bottom: 16px;
+  color: white;
+}
+.stat-col:nth-child(1) .stat-num { color: #60A5FA; }
+.stat-col:nth-child(2) .stat-num { color: #4ADE80; }
+.stat-col:nth-child(3) .stat-num { color: white; }
+.stat-desc {
+  font-size: 14px; line-height: 1.6; color: rgba(255,255,255,0.55);
+  max-width: 220px;
+}
+.stat-col:nth-child(3) .stat-desc { color: rgba(255,255,255,0.75); }
+
+/* ─── TEAM ─── */
+.team-intro {
+  background: var(--gray50); border: 1px solid var(--gray200); border-radius: 14px;
+  padding: 32px 40px; margin-bottom: 40px;
+  display: flex; align-items: flex-start; gap: 24px;
+}
+.team-icon { font-size: 36px; flex-shrink: 0; margin-top: 2px; }
+.team-intro p { font-size: 15px; color: var(--text-mid); line-height: 1.75; margin: 0; }
+.team-intro strong { color: var(--text-dark); }
+
+/* ─── PARTNERSHIP ─── */
+.partner-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.partner-card {
+  background: white; border: 1px solid var(--gray200); border-radius: 12px;
+  padding: 28px 32px; box-shadow: var(--shadow-sm);
+}
+.partner-icon { font-size: 28px; margin-bottom: 14px; }
+.partner-card h3 { font-size: 17px; font-weight: 700; color: var(--text-dark); margin-bottom: 8px; }
+.partner-card p { font-size: 14px; color: var(--text-soft); line-height: 1.6; }
+
+/* ─── PRICING ─── */
+.pricing-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; align-items: start; }
+.price-card {
+  background: white; border: 1px solid var(--gray200); border-radius: 14px;
+  padding: 28px; position: relative; box-shadow: var(--shadow-sm);
+}
+.price-card.featured {
+  border-color: var(--blue); box-shadow: 0 0 0 3px rgba(37,99,235,0.12), var(--shadow-md);
+}
+.price-ribbon {
+  position: absolute; top: -1px; right: 20px;
+  background: var(--blue); color: white;
+  font-size: 10px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 4px 12px; border-radius: 0 0 8px 8px;
+}
+.price-plan { font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-soft); margin-bottom: 8px; }
+.price-name { font-size: 20px; font-weight: 700; color: var(--text-dark); margin-bottom: 16px; }
+.price-amount { display: flex; align-items: baseline; gap: 4px; margin-bottom: 6px; }
+.price-kr { font-size: 34px; font-weight: 700; color: var(--text-dark); letter-spacing: -0.03em; }
+.price-period { font-size: 13px; color: var(--text-soft); }
+.price-note { font-size: 12.5px; color: var(--text-soft); margin-bottom: 24px; }
+.price-divider { height: 1px; background: var(--gray200); margin-bottom: 20px; }
+.price-features { list-style: none; margin-bottom: 28px; }
+.price-features li {
+  display: flex; align-items: flex-start; gap: 8px;
+  font-size: 13.5px; color: var(--text-mid); padding: 5px 0;
+}
+.price-features li::before { content: '✓'; color: var(--green); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+.price-upgrade-hint { font-size: 12px; color: var(--blue); text-align: center; margin-top: -16px; margin-bottom: 20px; }
+.btn-price {
+  display: block; text-align: center; text-decoration: none;
+  padding: 12px; border-radius: 9px; font-weight: 600; font-size: 14px; transition: all .15s;
+}
+.btn-price-outline {
+  border: 1.5px solid var(--gray200); color: var(--text-dark);
+}
+.btn-price-outline:hover { border-color: var(--blue); color: var(--blue); }
+.btn-price-solid { background: var(--blue); color: white; }
+.btn-price-solid:hover { background: var(--blue2); transform: translateY(-1px); }
+.price-footer { text-align: center; margin-top: 32px; font-size: 13px; color: var(--text-soft); }
+
+/* ─── FAQ ─── */
+.faq-list { max-width: 720px; margin: 0 auto; }
+.faq-item { border-bottom: 1px solid var(--gray200); }
+.faq-q {
+  width: 100%; text-align: left; background: none; border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 0; font-size: 15px; font-weight: 600; color: var(--text-dark);
+  transition: color .15s;
+}
+.faq-q:hover { color: var(--blue); }
+.faq-chevron { font-size: 18px; color: var(--text-soft); transition: transform .2s; flex-shrink: 0; }
+.faq-q.open .faq-chevron { transform: rotate(180deg); }
+.faq-a {
+  display: none; padding: 0 0 20px; font-size: 14px; color: var(--text-soft); line-height: 1.7;
+}
+.faq-a.open { display: block; }
+
+/* ─── CTA FORM ─── */
+.cta-form-wrap {
+  background: var(--navy); border-radius: 16px;
+  padding: 56px 64px; text-align: center;
+}
+.cta-form-wrap h2 { color: white; margin-bottom: 12px; }
+.cta-form-wrap p { color: rgba(255,255,255,0.5); font-size: 16px; margin-bottom: 36px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 14px; max-width: 560px; margin-left: auto; margin-right: auto; }
+.form-row.one { grid-template-columns: 1fr; }
+.form-input {
+  width: 100%; padding: 12px 16px;
+  background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 9px; font-size: 14px; color: white; font-family: inherit;
+  transition: border-color .15s;
+}
+.form-input::placeholder { color: rgba(255,255,255,0.3); }
+.form-input:focus { outline: none; border-color: rgba(37,99,235,0.6); background: rgba(255,255,255,0.09); }
+.btn-form {
+  margin-top: 8px; padding: 14px 40px;
+  background: var(--blue); color: white; border: none;
+  border-radius: 9px; font-weight: 600; font-size: 16px; cursor: pointer;
+  font-family: inherit; transition: background .15s, transform .1s;
+}
+.btn-form:hover { background: var(--blue2); transform: translateY(-1px); }
+.form-disclaimer { font-size: 12px; color: rgba(255,255,255,0.25); margin-top: 14px; }
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--navy2); border-top: 1px solid rgba(255,255,255,0.05);
+  padding: 40px 48px; color: rgba(255,255,255,0.4); font-size: 13px;
+}
+.footer-inner { max-width: 1120px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+.footer-brand { display: flex; align-items: center; gap: 8px; text-decoration: none; color: rgba(255,255,255,0.5); font-weight: 600; }
+.footer-links { display: flex; gap: 24px; }
+.footer-links a { color: rgba(255,255,255,0.35); text-decoration: none; transition: color .15s; }
+.footer-links a:hover { color: rgba(255,255,255,0.65); }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 900px) {
+  nav { padding: 0 20px; }
+  .nav-links { display: none; }
+  .hero { padding: 56px 20px; }
+  .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+  .mockup { display: none; }
+  .section { padding: 64px 20px; }
+  .guarantee-banner { padding: 16px 20px; }
+  .problem-grid, .modules-grid, .pricing-grid { grid-template-columns: 1fr; }
+  .steps-track { grid-template-columns: 1fr; }
+  .steps-track::before { display: none; }
+  .partner-grid { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .cta-form-wrap { padding: 40px 24px; }
+  .footer-inner { flex-direction: column; gap: 16px; text-align: center; }
+  .quote-wrap { padding: 32px 24px; }
+  .compat { padding: 14px 20px; }
 }
 </style>
 
-<!-- ══════════════════════ NAV ══════════════════════ -->
-<nav>
-  <div class="nav-inner">
-    <div class="logo">
-      <div class="logo-icon">
-        <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-      </div>
-      <span class="logo-name">Logitide</span>
-      <span class="logo-beta">BETA</span>
+<!-- NAV -->
+</head><body><nav>
+  <a href="file:///C:/Users/marko/Downloads/logitidewebsite.html#" class="nav-brand">
+    <div class="nav-logo">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path>
+        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+      </svg>
     </div>
-    <div class="nav-links">
-      <a href="#how">Så fungerar det</a>
-      <a href="#moduler">Moduler</a>
-      <a href="#partnerskap">Partnerskap</a>
-      <a href="#pilot">Pilot</a>
-      <a href="#faq">FAQ</a>
-    </div>
-    <a href="#pilot" class="nav-cta">Ansök om tillgång →</a>
-  </div>
+    <span class="nav-wordmark">Logitide</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="file:///C:/Users/marko/Downloads/logitidewebsite.html#hur">Så fungerar det</a></li>
+    <li><a href="file:///C:/Users/marko/Downloads/logitidewebsite.html#moduler">Moduler</a></li>
+    <li><a href="file:///C:/Users/marko/Downloads/logitidewebsite.html#partnerskap">Partnerskap</a></li>
+    <li><a href="file:///C:/Users/marko/Downloads/logitidewebsite.html#pris">Pris</a></li>
+    <li><a href="file:///C:/Users/marko/Downloads/logitidewebsite.html#faq">FAQ</a></li>
+  </ul>
+  <a href="file:///C:/Users/marko/Downloads/logitidewebsite.html#boka" class="btn-nav">Boka ett första möte →</a>
 </nav>
 
-<!-- ══════════════════════ HERO ══════════════════════ -->
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="ticker-item"><span class="ticker-check">✓</span> Monitor ERP</span>
+    <span class="ticker-item"><span class="ticker-check">✓</span> Jeeves</span>
+    <span class="ticker-item"><span class="ticker-check">✓</span> Ongoing WMS</span>
+    <span class="ticker-item"><span class="ticker-check">✓</span> Business Central</span>
+    <span class="ticker-item"><span class="ticker-check">✓</span> SAP</span>
+    <span class="ticker-item"><span class="ticker-check">✓</span> Pyramid</span>
+    <span class="ticker-item"><span class="ticker-check">✓</span> Alla affärssystem via Excel-export</span>
+    <span class="ticker-item"><span class="ticker-check">✓</span> Monitor ERP</span>
+    <span class="ticker-item"><span class="ticker-check">✓</span> Jeeves</span>
+    <span class="ticker-item"><span class="ticker-check">✓</span> Ongoing WMS</span>
+    <span class="ticker-item"><span class="ticker-check">✓</span> Business Central</span>
+    <span class="ticker-item"><span class="ticker-check">✓</span> SAP</span>
+    <span class="ticker-item"><span class="ticker-check">✓</span> Pyramid</span>
+    <span class="ticker-item"><span class="ticker-check">✓</span> Alla affärssystem via Excel-export</span>
+  </div>
+</div>
+
+<!-- HERO -->
 <section class="hero">
   <div class="hero-inner">
     <div>
-      <div class="hero-eyebrow"><span class="hero-dot"></span> Beta — testat av svenska lagerchefer</div>
-      <h1>Från kaos till<br><span class="accent">klarhet på 60 sek.</span></h1>
-      <p class="hero-sub">Logitide analyserar ditt lagersaldo och ger lageransvarig en prioriterad lista på exakt vad som kräver handling — varje dag. Inga fler Excel-jakter. Inga fler överraskningar.</p>
-      <div class="hero-btns">
-        <a href="#pilot" class="btn-primary">Ansök om tillgång →</a>
-        <a href="#apply" class="btn-ghost">⚡ Se en snabb demo</a>
+      <div class="hero-pill">
+        <div class="hero-pill-dot"></div>
+        Specialist på lageroptimering &amp; supply chain
       </div>
-      <div class="hero-stats">
-        <div><div class="stat-val">60<sup> sek</sup></div><div class="stat-lbl">Till första prioritering</div></div>
-        <div><div class="stat-val">0<sup> kr</sup></div><div class="stat-lbl">Att komma igång</div></div>
-        <div><div class="stat-val">100<sup> %</sup></div><div class="stat-lbl">Transparenta beräkningar</div></div>
+      <h1>Lageroptimering<br>utan <em>ERP-projekt.</em></h1>
+      <p class="hero-sub">Vi analyserar ert lager, identifierar vad som kostar er pengar — och driver optimeringsarbetet tillsammans med er. Från första analys till löpande resultat.</p>
+      <div class="hero-erp-tag">
+        <span>✓</span> Vi implementerar allt — ni fokuserar på lagret
+      </div>
+      <div class="hero-btns">
+        <a href="file:///C:/Users/marko/Downloads/logitidewebsite.html#boka" class="btn-primary">Boka ett första möte →</a>
+        <a href="file:///C:/Users/marko/Downloads/logitidewebsite.html#hur" class="btn-ghost">⚡ Se hur det fungerar</a>
+      </div>
+      <div class="hero-kpis">
+        <div class="kpi">
+          <div class="kpi-num">20–40<sup>%</sup></div>
+          <div class="kpi-label">Typisk lagerkostnadsminskning</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-num">0<sup>kr</sup></div>
+          <div class="kpi-label">Att starta diagnosen</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-num">4–8<sup>v</sup></div>
+          <div class="kpi-label">Till märkbar effekt</div>
+        </div>
       </div>
     </div>
-
-    <!-- App mockup -->
     <div class="mockup">
       <div class="mockup-bar">
-        <div class="mdot" style="background:#ef4444"></div>
-        <div class="mdot" style="background:#f59e0b"></div>
-        <div class="mdot" style="background:#22c55e"></div>
-        <span class="mockup-url">logitide — Översikt</span>
+        <div class="dot dot-r"></div><div class="dot dot-y"></div><div class="dot dot-g"></div>
+        <span class="mockup-title">Logitide — Översikt</span>
       </div>
-      <div class="mkpi">
-        <div class="mkpi-card"><div class="mkpi-lbl">Bundet kapital</div><div class="mkpi-val" style="color:#a855f7">4,5 mkr</div></div>
-        <div class="mkpi-card"><div class="mkpi-lbl">Kritiska brister</div><div class="mkpi-val" style="color:#ef4444">4 st</div></div>
-        <div class="mkpi-card"><div class="mkpi-lbl">Överlager</div><div class="mkpi-val" style="color:#f97316">8 art.</div></div>
-        <div class="mkpi-card"><div class="mkpi-lbl">Att beställa</div><div class="mkpi-val" style="color:#3b82f6">1 500 tkr</div></div>
-      </div>
-      <div class="mabc">
-        <div class="mabc-lbl">ABC-FÖRDELNING</div>
-        <div class="mbar-row"><span class="mbar-name">A-artiklar</span><div class="mbar-track"><div class="mbar-fill" style="width:84%;background:#22c55e"></div></div><span class="mbar-pct">84%</span></div>
-        <div class="mbar-row"><span class="mbar-name">B-artiklar</span><div class="mbar-track"><div class="mbar-fill" style="width:12%;background:#f59e0b"></div></div><span class="mbar-pct">12%</span></div>
-        <div class="mbar-row"><span class="mbar-name">C-artiklar</span><div class="mbar-track"><div class="mbar-fill" style="width:4%;background:#6b7280"></div></div><span class="mbar-pct">4%</span></div>
-      </div>
-      <div class="mactions">
-        <div class="mact-lbl">ÅTGÄRDER IDAG</div>
-        <div class="mact-row">
-          <div class="mact-name"><div class="mact-bar" style="background:#ef4444"></div>Hydraulpump 18cc — beställ 24 st</div>
-          <span class="mact-chip" style="background:#fef2f2;color:#dc2626">KRITISK</span>
+      <div class="mockup-body">
+        <div class="kpi-row">
+          <div class="kpi-tile"><div class="kpi-tile-label">Bundet kapital</div><div class="kpi-tile-val v-blue">4,5 mkr</div></div>
+          <div class="kpi-tile"><div class="kpi-tile-label">Kritiska brister</div><div class="kpi-tile-val v-red">4 st</div></div>
+          <div class="kpi-tile"><div class="kpi-tile-label">Överlager</div><div class="kpi-tile-val v-amber">8 art.</div></div>
+          <div class="kpi-tile"><div class="kpi-tile-label">Att beställa</div><div class="kpi-tile-val v-green">1 500 kr</div></div>
         </div>
-        <div class="mact-row">
-          <div class="mact-name"><div class="mact-bar" style="background:#f59e0b"></div>Kullager 6205 — flytta till Zon A</div>
-          <span class="mact-chip" style="background:#fffbeb;color:#d97706">BEVAKA</span>
+        <div class="abc-section">
+          <div class="abc-title">ABC-fördelning</div>
+          <div class="abc-row"><span class="abc-lbl">A</span><div class="abc-bar-bg"><div class="abc-bar" style="width:84%;background:#4ADE80"></div></div><span style="font-size:10px;color:rgba(255,255,255,0.35)">84%</span></div>
+          <div class="abc-row"><span class="abc-lbl">B</span><div class="abc-bar-bg"><div class="abc-bar" style="width:16%;background:#FBBF24"></div></div><span style="font-size:10px;color:rgba(255,255,255,0.35)">16%</span></div>
+          <div class="abc-row"><span class="abc-lbl">C</span><div class="abc-bar-bg"><div class="abc-bar" style="width:4%;background:#6B7280"></div></div><span style="font-size:10px;color:rgba(255,255,255,0.35)">4%</span></div>
         </div>
-        <div class="mact-row">
-          <div class="mact-name"><div class="mact-bar" style="background:#a855f7"></div>O-ring 80×4 — minska inköpskvantitet</div>
-          <span class="mact-chip" style="background:#faf5ff;color:#7c3aed">ÖVERLAGER</span>
-        </div>
+        <div class="actions-title">Åtgärder idag</div>
+        <div class="action-row"><div class="action-dot" style="background:#F87171"></div><span class="action-text">Hydraulpump 18cc — beställ 24 st</span><span class="badge badge-red">KRITISK</span></div>
+        <div class="action-row"><div class="action-dot" style="background:#FBBF24"></div><span class="action-text">Kullager 6205 — flytta till Zon A</span><span class="badge badge-amber">BEVAKA</span></div>
+        <div class="action-row"><div class="action-dot" style="background:#93C5FD"></div><span class="action-text">O-ring 80×4 — minska inköpskvantitet</span><span class="badge badge-blue">ÖVERLAGER</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════════════════ TICKER ══════════════════════ -->
-<div class="ticker">
-  <div class="ticker-track">
-    <div class="ticker-inner" id="tick1">
-      <div class="ticker-item">Visma</div><div class="ticker-item">Business Central</div><div class="ticker-item">Pyramid</div><div class="ticker-item">Jeeves</div><div class="ticker-item">Fortnox</div><div class="ticker-item">SAP</div><div class="ticker-item">Alla affärssystem via Excel-export</div><div class="ticker-item">Monitor ERP</div><div class="ticker-item">Visma</div><div class="ticker-item">Business Central</div><div class="ticker-item">Pyramid</div><div class="ticker-item">Jeeves</div><div class="ticker-item">Fortnox</div><div class="ticker-item">SAP</div><div class="ticker-item">Alla affärssystem via Excel-export</div><div class="ticker-item">Monitor ERP</div>
+<!-- GARANTI BANNER — direkt under hero -->
+<div class="guarantee-banner">
+  <div class="guarantee-banner-inner">
+    <div class="guarantee-icon">🎯</div>
+    <div class="guarantee-text">
+      <strong>Vår garanti: Diagnosen betalar sig — eller kostar ingenting.</strong>
+      Om vi inte identifierar minst tre gånger abonnemangspriset i förbättringspotential under den kostnadsfria diagnosen, tar vi inte emot er som kund.
+    </div>
+    <a href="file:///C:/Users/marko/Downloads/logitidewebsite.html#boka" class="btn-primary" style="white-space:nowrap;font-size:13px;padding:10px 20px">Starta diagnosen →</a>
+  </div>
+</div>
+
+<!-- COMPAT STRIP -->
+<div class="compat">
+  <div class="compat-inner">
+    <span class="compat-label">Fungerar med de system ni redan har:</span>
+    <div class="compat-tags">
+      <span class="compat-tag"><span class="compat-tag-check">✓</span> Pyramid</span>
+      <span class="compat-tag"><span class="compat-tag-check">✓</span> Monitor ERP</span>
+      <span class="compat-tag"><span class="compat-tag-check">✓</span> Jeeves</span>
+      <span class="compat-tag"><span class="compat-tag-check">✓</span> Ongoing WMS</span>
+      <span class="compat-tag"><span class="compat-tag-check">✓</span> Business Central</span>
+      <span class="compat-tag"><span class="compat-tag-check">✓</span> SAP</span>
+      <span class="compat-tag"><span class="compat-tag-check">✓</span> Vilken Excel-export som helst</span>
     </div>
   </div>
 </div>
 
-<!-- ══════════════════════ KPI STRIP ══════════════════════ -->
-<div class="kpi-strip">
-  <div class="kpi-strip-inner">
-    <div class="kstrip-item">
-      <div class="kstrip-val" style="color:var(--blue)">60 <span style="font-size:1.1rem;color:var(--muted)">sek</span></div>
-      <div class="kstrip-sub">Till första prioritering</div>
-    </div>
-    <div class="kstrip-item">
-      <div class="kstrip-val" style="color:var(--green)">100<span style="font-size:1.1rem;color:var(--muted)">%</span></div>
-      <div class="kstrip-sub">Transparenta beräkningar — ingen svart låda</div>
-    </div>
-    <div class="kstrip-item">
-      <div class="kstrip-val" style="color:#ea580c">0 <span style="font-size:1.1rem;color:var(--muted)">Excel</span></div>
-      <div class="kstrip-sub">Ingen manuell analys behövs</div>
-    </div>
-    <div class="kstrip-item">
-      <div class="kstrip-val" style="color:var(--purple)">Direkt</div>
-      <div class="kstrip-sub">Konkreta åtgärder — inte bara siffror</div>
-    </div>
-  </div>
-</div>
-
-<!-- ══════════════════════ TRAPS ══════════════════════ -->
-<div class="section-white" id="pain">
-  <div class="section">
-    <div class="eyebrow" style="color:var(--blue)">Känner du igen dig?</div>
+<!-- PROBLEM -->
+<section class="section section-gray" id="problem">
+  <div class="inner">
+    <div class="eyebrow">Känner du igen dig?</div>
     <h2>Tre fällor som finns i<br>nästan varje lager</h2>
-    <p class="section-lead">Logitide hittar dem automatiskt. Varje dag. Innan de blir ett problem.</p>
-    <div class="traps-grid">
-      <div class="trap-card">
-        <div class="trap-icon">🚨</div>
-        <div class="trap-tag" style="color:#dc2626">Restnoteringsstopp</div>
+    <p class="section-sub">Logitide hittar dem automatiskt. Varje dag. Innan de blir ett problem.</p>
+    <div class="problem-grid">
+      <div class="problem-card">
+        <div class="problem-type type-red">🚨 Restnoteringsstopp</div>
         <h3>Lagret tar slut — ordern kan inte plockas</h3>
-        <p class="trap-scenario">M12 Bult helgäng: 420 st kvar, förbrukning 780 st/dag. Lagret tar slut idag. Beställning är inte lagd.</p>
-        <div class="trap-solution" style="border-color:#22c55e">
-          <div class="trap-solution-lbl" style="color:#16a34a">✓ Logitides lösning</div>
-          <p style="color:#166534">Logitide visar det kl 07:00. Du beställer. Krisen uteblir.</p>
+        <p>M12 Bult helgång: 420 st kvar, förbrukning 780 st/dag. Lagret tar slut idag. Beställning är inte lagd.</p>
+        <div class="logitide-solution sol-red">
+          <div class="sol-label sol-label-red">✓ Logitides lösning</div>
+          <p>Logitide visar det kl 07:00. Du beställer. Krisen uteblir.</p>
         </div>
       </div>
-      <div class="trap-card">
-        <div class="trap-icon">📦</div>
-        <div class="trap-tag" style="color:#d97706">Fel artiklar på fel plats</div>
+      <div class="problem-card">
+        <div class="problem-type type-amber">📦 Fel artiklar på fel plats</div>
         <h3>A-artiklar längst bort från plockstationen</h3>
-        <p class="trap-scenario">ABC-analysen visar att era frekventa artiklar ligger i Zon C medan långsamma artiklar blockerar guldzonerna.</p>
-        <div class="trap-solution" style="border-color:#f59e0b">
-          <div class="trap-solution-lbl" style="color:#b45309">✓ Logitides lösning</div>
-          <p style="color:#78350f">Logitide klassificerar och prioriterar — du ser exakt vilka artiklar som ska flyttas och varför.</p>
+        <p>ABC-analysen visar att era frekventa artiklar ligger i Zon C medan långsamma artiklar blockerar guldzonerna.</p>
+        <div class="logitide-solution sol-amber">
+          <div class="sol-label sol-label-amber">✓ Logitides lösning</div>
+          <p>Logitide klassificerar och prioriterar — du ser exakt vilka artiklar som ska flyttas och varför.</p>
         </div>
       </div>
-      <div class="trap-card">
-        <div class="trap-icon">💸</div>
-        <div class="trap-tag" style="color:#7c3aed">Kapital bundet i onödan</div>
+      <div class="problem-card">
+        <div class="problem-type type-purple">💰 Kapital bundet i onödan</div>
         <h3>Överlager binder kapital som inte genererar värde</h3>
-        <p class="trap-scenario">120 pallar i lager, maxnivå 30. 90 pallar för mycket — 450 000 kr bundet kapital som inte omsätts.</p>
-        <div class="trap-solution" style="border-color:#a855f7">
-          <div class="trap-solution-lbl" style="color:#6d28d9">✓ Logitides lösning</div>
-          <p style="color:#4c1d95">Logitide beräknar och visar vad det kostar per månad att låta det fortsätta.</p>
+        <p>120 pallar i lager, maxnivå 30. 90 pallar för mycket — 450 000 kr bundet kapital som inte omsätts.</p>
+        <div class="logitide-solution sol-purple">
+          <div class="sol-label" style="color:var(--purple)">✓ Logitides lösning</div>
+          <p>Logitide beräknar och visar vad det kostar per månad att låta det fortsätta.</p>
         </div>
       </div>
     </div>
+    <div style="text-align:center;margin-top:48px">
+      <a href="file:///C:/Users/marko/Downloads/logitidewebsite.html#boka" class="btn-primary">Känner du igen dig? Boka en kostnadsfri diagnos →</a>
+    </div>
   </div>
-</div>
+</section>
 
-<!-- ══════════════════════ HOW IT WORKS ══════════════════════ -->
-<div class="section-surface" id="how">
-  <div class="section">
-    <div class="eyebrow" style="color:var(--blue)">Så här fungerar det</div>
+<!-- HOW IT WORKS -->
+<section class="section section-light" id="hur">
+  <div class="inner">
+    <div class="eyebrow">Så här fungerar det</div>
     <h2>Din resa med Logitide</h2>
-    <p class="section-lead">Tre steg från första filen till ett optimerat lager. Ingen implementation. Ingen konsult. Bara en enkel export från ditt affärssystem.</p>
-    <div class="journey">
-      <div class="journey-track">
-        <div class="journey-step">
-          <div class="journey-node" style="background:#22c55e">1</div>
-          <div class="journey-tag" style="color:#16a34a">Utan kostnad</div>
-          <h3>Lagerdiagnos</h3>
-          <p>Ladda upp din artikelexport. På 60 sekunder ser du överlager, brister och bundet kapital i kronor. Inga förpliktelser — bara insikt.</p>
+    <p class="section-sub">Vi tar er från första analysen till löpande lageroptimering — med vår expertis som drivkraft och vår mjukvara som motor.</p>
+    <div class="steps-track">
+      <div class="step">
+        <div class="step-num step-num-1">1</div>
+        <div class="step-tag">Steg 1 — Kostnadsfritt</div>
+        <h3>Lagerdiagnos</h3>
+        <p>Vi analyserar ert lager och presenterar en rapport med överlager, brister och bundet kapital i kronor. Konkret underlag för beslut — innan ni förbinder er till något.</p>
+      </div>
+      <div class="step">
+        <div class="step-num step-num-2">2</div>
+        <div class="step-tag">Steg 2 — Startprogram</div>
+        <h3>Implementation &amp; uppsättning</h3>
+        <p>KPI:erna sätter vi upp tillsammans under ett möte — servicenivåer, ledtider, säkerhetslager. Vi hjälper er sedan att automatisera dataflödet från ert affärssystem, så att analysen uppdateras dagligen utan att ni exporterar manuellt.</p>
+      </div>
+      <div class="step">
+        <div class="step-num step-num-3">3</div>
+        <div class="step-tag">Steg 3 — Löpande partnerskap</div>
+        <h3>Kontinuerlig optimering</h3>
+        <p>Vi driver optimeringsarbetet löpande — veckovis genomgång av åtgärder, inköpsbeslut och lagerstruktur. Er lageransvarig får ett fast bollplank med djup expertis.</p>
+      </div>
+    </div>
+    <!-- MONTHLY CYCLE -->
+    <div class="cycle-wrap">
+      <div class="cycle-label">Löpande partnerskap</div>
+      <div class="cycle-title">Så ser en månad med Logitide ut</div>
+      <div class="cycle-sub">Strukturerat, förutsägbart och alltid konkret — ni vet alltid vad som händer härnäst.</div>
+      <div class="cycle-grid">
+        <div class="cycle-step">
+          <div class="cycle-dot">📊</div>
+          <div class="cycle-week">Vecka 1</div>
+          <h4>Analys</h4>
+          <p>Vi kör analysen, identifierar avvikelser och formulerar era tre viktigaste åtgärder för månaden.</p>
         </div>
-        <div class="journey-step">
-          <div class="journey-node" style="background:#2563eb">2</div>
-          <div class="journey-tag" style="color:#2563eb">Startprogram</div>
-          <h3>KPI-uppsättning</h3>
-          <p>Vi kalibrerar systemet för ditt lager: ledtider, leverantörer, säkerhetslager och servicenivå. Startprogram: 4 900 kr/månad i 3 månader. Halverat pris för de 5 första kunderna som delar resultat som referenscase.</p>
+        <div class="cycle-step">
+          <div class="cycle-dot">📋</div>
+          <div class="cycle-week">Vecka 2</div>
+          <h4>Månadsrapport</h4>
+          <p>En kortfattad rapport med konkreta siffror och tydliga prioriteringar landar i er inkorg.</p>
         </div>
-        <div class="journey-step">
-          <div class="journey-node" style="background:#1e293b">3</div>
-          <div class="journey-tag" style="color:var(--muted)">Löpande · Full kontroll</div>
-          <h3>Löpande optimering</h3>
-          <p>Varje vecka ser lageransvarig exakt vad som behöver åtgärdas — brist, överlager, flytt eller inköp. Logitide är inte ett system du köper — det är ett samarbete som utvecklar ert lager månad för månad. Utan bindningstid.</p>
+        <div class="cycle-step">
+          <div class="cycle-dot">🤝</div>
+          <div class="cycle-week">Vecka 3</div>
+          <h4>Konsultmöte</h4>
+          <p>Vi går igenom rapporten, beslutar om åtgärder och svarar på frågor. Ni lämnar med en klar plan.</p>
+        </div>
+        <div class="cycle-step">
+          <div class="cycle-dot">✅</div>
+          <div class="cycle-week">Vecka 4</div>
+          <h4>Uppföljning</h4>
+          <p>Vi stämmer av att åtgärderna är genomförda och fångar nya signaler innan nästa cykel startar.</p>
         </div>
       </div>
     </div>
-  </div>
-</div>
 
-<!-- ══════════════════════ FEATURES ══════════════════════ -->
-<div class="section-white" id="moduler">
-  <div class="section">
-    <div class="eyebrow" style="color:var(--blue)">Moduler</div>
-    <h2>Allt lagerchefen behöver.<br>Ingenting mer.</h2>
-    <div class="feat-grid">
-      <div class="feat-card">
-        <div class="feat-icon" style="background:#fef2f2"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
-        <div class="feat-tag" style="color:#dc2626">Inga överraskningar</div>
-        <h3>Bristkontroll</h3>
-        <p>Se vilka artiklar som saknas eller är på väg att ta slut — prioriterade efter affärspåverkan.</p>
-      </div>
-      <div class="feat-card">
-        <div class="feat-icon" style="background:#f0fdf4"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.5"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
-        <div class="feat-tag" style="color:#16a34a">ABC/XYZ varje vecka</div>
-        <h3>Kapitaloptimering</h3>
-        <p>Automatisk klassificering av hela sortimentet. Se hur mycket kapital som är bundet var.</p>
-      </div>
-      <div class="feat-card">
-        <div class="feat-icon" style="background:#eff6ff"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2.5"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></div>
-        <div class="feat-tag" style="color:#2563eb">Rätt plats, kortare väg</div>
-        <h3>Slotting</h3>
-        <p>Identifierar felplacerade artiklar. Frekventa artiklar ska alltid stå närmast plockstationen.</p>
-      </div>
-      <div class="feat-card">
-        <div class="feat-icon" style="background:#fff7ed"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ea580c" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-        <div class="feat-tag" style="color:#ea580c">Ett klick, klart</div>
-        <h3>Inköpsförslag</h3>
-        <p>Beräknar automatiskt rätt orderkvantitet baserat på förbrukning, ledtid och säkerhetslager.</p>
-      </div>
-      <div class="feat-card">
-        <div class="feat-icon" style="background:#f0f9ff"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-        <div class="feat-tag" style="color:#0284c7">Alltid tillgänglig</div>
-        <h3>Historik</h3>
-        <p>Se hur lagret förändrats över tid. Jämför tidigare uppladdningar och följ trenden vecka för vecka.</p>
-      </div>
-      <div class="feat-card coming">
-        <div class="feat-icon" style="background:#f8fafc"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
-        <div class="feat-tag" style="color:#94a3b8">Mätbara mål <span class="feat-soon">Kommer snart</span></div>
-        <h3>KPI & Produktivitet</h3>
-        <p>Sätt produktivitetsmål och följ upp mot utfall. Plockproduktivitet, OTIF, lageromsättning.</p>
-      </div>
-      <div class="feat-card coming">
-        <div class="feat-icon" style="background:#f8fafc"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
-        <div class="feat-tag" style="color:#94a3b8">Avtal vs verklighet <span class="feat-soon">Kommer snart</span></div>
-        <h3>Leverantörsanalys</h3>
-        <p>Jämför avtalad mot faktisk ledtid. Vet vilka leverantörer som är en risk för ditt lager.</p>
-      </div>
+    <div style="text-align:center;margin-top:48px">
+      <a href="file:///C:/Users/marko/Downloads/logitidewebsite.html#boka" class="btn-primary">Starta er resa — boka ett första möte →</a>
     </div>
   </div>
-</div>
+</section>
 
-<!-- ══════════════════════ PARTNERSHIP ══════════════════════ -->
-<div class="section-dark" id="partnerskap">
-  <div class="section" style="color:#fff">
-    <div class="eyebrow" style="color:rgba(255,255,255,.4)">Vår modell</div>
-    <h2 style="color:#fff">Logitide är ett partnerskap,<br>inte ett abonnemang</h2>
-    <p class="section-lead" style="color:rgba(255,255,255,.5)">Vi är inte ännu en SaaS-tjänst du köper och glömmer. Vi vill förstå ditt lager på djupet — och hjälpa dig förbättra det månad efter månad.</p>
-    <div class="partner-grid" style="margin-top:2rem">
-      <div class="partner-card">
-        <div class="partner-icon">🤝</div>
-        <h3>3 timmar konsult per månad</h3>
-        <p>Varje månad har ni 3 inlagda timmar med en Logitide-specialist. Vi går igenom era KPI:er, identifierar mönster och ger konkreta förbättringsförslag — inte bara data.</p>
+<!-- MODULES -->
+<section class="section section-gray" id="moduler">
+  <div class="inner">
+    <div class="eyebrow">Vad vi levererar</div>
+    <h2>Vår verktygslåda — driven av oss</h2>
+    <p class="section-sub">Vi utför dessa analyser löpande åt er. Ni behöver inte förstå metoderna — ni behöver bara se resultaten och agera på dem.</p>
+    <div class="modules-grid">
+      <div class="module-card">
+        <div class="module-icon">📊</div>
+        <h3>ABC-analys</h3>
+        <p>Klassificerar alla artiklar efter omsättningshastighet och värde. Visar exakt var era A-artiklar ska ligga.</p>
       </div>
+      <div class="module-card">
+        <div class="module-icon">⚠️</div>
+        <h3>Brist &amp; överlager</h3>
+        <p>Daglig bevakning av lagernivåer mot faktisk förbrukning. Larm vid kritiska brister — innan de stoppar produktionen.</p>
+      </div>
+      <div class="module-card">
+        <div class="module-icon">🔄</div>
+        <h3>Inköpsoptimering</h3>
+        <p>Beräknar optimala beställningspunkter och kvantiteter baserat på ledtid, förbrukning och säkerhetslager.</p>
+      </div>
+      <div class="module-card">
+        <div class="module-icon">💡</div>
+        <h3>XYZ-analys</h3>
+        <p>Mäter förbrukningsvariation per artikel. Kombinerad med ABC ger det den fullständiga bilden av lagerrisken.</p>
+      </div>
+      <div class="module-card">
+        <div class="module-icon">📍</div>
+        <h3>Zonoptimering</h3>
+        <p>Visar vilka artiklar som ska flyttas till rätt zon — baserat på plockfrekvens och ABC-klassificering. Era A-artiklar till guldzonerna, alltid.</p>
+      </div>
+      <div class="module-card">
+        <div class="module-icon">📈</div>
+        <h3>KPI-dashboard</h3>
+        <p>Realtidsöversikt av servicenivå, lageromsättningshastighet och bundet kapital — i kronor, inte procent.</p>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:48px">
+      <a href="file:///C:/Users/marko/Downloads/logitidewebsite.html#boka" class="btn-primary">Se vad vi hittar i ert lager →</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS / SOCIAL PROOF (dark) -->
+<section class="section section-dark">
+  <div class="inner">
+    <div style="text-align:center;margin-bottom:40px">
+      <div class="eyebrow" style="color:rgba(255,255,255,0.35)">Varför det borde prioriteras</div>
+      <h2 style="color:white;margin-bottom:12px">Vad ett ooptimerat lager kostar er</h2>
+      <p style="color:rgba(255,255,255,0.45);font-size:14px;max-width:520px;margin:0 auto">Tre siffror som beskriver verkligheten för de flesta svenska lager — och vad Logitide gör åt det.</p>
+    </div>
+    <div class="stats-block">
+      <div class="stat-col">
+        <div class="stat-eyebrow">Lagerhållningskostnad</div>
+        <div class="stat-num">20–30%</div>
+        <div class="stat-desc">av lagervärdet försvinner varje år i kapitalkostnad, hantering och inkurans — oavsett om ni optimerar eller inte.</div>
+      </div>
+      <div class="stat-col">
+        <div class="stat-eyebrow">Blind spot</div>
+        <div class="stat-num">43%</div>
+        <div class="stat-desc">av SME-företag saknar realtidsöversikt över sina lagernivåer och vet inte vad det faktiskt kostar dem.</div>
+      </div>
+      <div class="stat-col">
+        <div class="stat-eyebrow">Vår garanti</div>
+        <div class="stat-num">3×</div>
+        <div class="stat-desc">Vi hittar minst tre gånger abonnemangspriset i förbättringspotential — eller tar vi inte emot er som kund.</div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:40px">
+      <a href="file:///C:/Users/marko/Downloads/logitidewebsite.html#boka" class="btn-primary">Se vad det kostar ert lager →</a>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNERSHIP -->
+<section class="section section-light" id="partnerskap">
+  <div class="inner">
+    <div class="eyebrow">Vilka vi är</div>
+    <h2>Ett partnerskap med kontinuitet</h2>
+    <p class="section-sub">Vi är inte en mjukvaruprodukt ni köper och lämnas ensamma med. Vi är er partner för lageroptimering — med expertis, verktyg och engagemang på lång sikt.</p>
+    <div class="team-intro">
+      <div class="team-icon">👤</div>
+      <p><strong>Logitide grundades av en lager- och logistikchef med över 10 års operativt ansvar på stora, globala företag</strong> — inte som konsult utifrån, utan som den som ägde resultaten på riktigt.</p>
+      <p style="margin-top:14px">Vår systemkonsult bär med sig djup kompetens inom supply chain-digitalisering och operativ logistik från komplexa affärsmiljöer. Tillsammans levererar vi den expertis som normalt kostar er att köpa in separat — som ett samlat partnerskap.</p>
+    </div>
+    <div class="partner-grid">
       <div class="partner-card">
         <div class="partner-icon">🎯</div>
-        <h3>Anpassat till ert lager</h3>
-        <p>Säkerhetslager, ledtider, ABC-gränser — allt kalibreras efter hur just ert lager fungerar. Inga generiska mallar. Vi sätter parametrarna tillsammans med er lageransvariga.</p>
+        <h3>Dedikerad konsultresurs</h3>
+        <p>Ni får en erfaren logistikkonsult som äger er lageroptimering. Vi håller veckovis kontakt, driver åtgärder och ser till att förbättringarna faktiskt händer — inte bara rapporteras.</p>
       </div>
       <div class="partner-card">
         <div class="partner-icon">📈</div>
-        <h3>Mätbar förbättring månadsvis</h3>
-        <p>Vi sätter mätbara mål i piloten och följer upp dem varje månad. Servicenivå, bundet kapital, överlager i kronor — ni ser svart på vitt vad samarbetet ger.</p>
-      </div>
-      <div class="partner-card" style="grid-column:span 3">
-        <div class="partner-icon">🔄</div>
-        <h3>Systemet växer med er</h3>
-        <p>Nya moduler, ny ERP-integration, fler användare — Logitide skalas efter era behov. Ni behöver aldrig byta system när ni växer.</p>
-      </div>
-      <div class="partner-philosophy" style="grid-column:span 3">
-        <strong>Vår filosofi:</strong> Priset sätts alltid i samråd med er — efter piloten, när vi vet exakt vad systemet ger ert lager i konkret värde. Ingen bindningstid. Ingen startkostnad.
+        <h3>Resultat, inte rapporter</h3>
+        <p>Vår ersättning bygger på kontinuitet och resultat. Ju bättre ert lager presterar, desto starkare är vår relation. Det är så ett riktigt partnerskap ser ut — inte ett engångsuppdrag.</p>
       </div>
     </div>
-  </div>
-</div>
-
-<!-- ══════════════════════ ANSÖK ══════════════════════ -->
-<div class="section-dark" id="pilot" style="border-top:1px solid rgba(255,255,255,.06)"><span id="apply"></span>
-  <div class="section" style="color:#fff">
-    <div style="max-width:860px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center">
-      <!-- Vänster: text -->
-      <div>
-        <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(59,130,246,.15);color:var(--blue2);border:1px solid rgba(59,130,246,.25);border-radius:20px;padding:4px 14px;font-size:.72rem;font-weight:700;letter-spacing:.07em;margin-bottom:1.25rem">Begränsat antal platser just nu</div>
-        <h2 style="color:#fff;margin-bottom:1rem">Ansök om tillgång till Logitide</h2>
-        <p style="color:rgba(255,255,255,.5);font-size:.93rem;line-height:1.8;margin-bottom:1.75rem">Vi tar emot ett begränsat antal kunder åt gången för att kunna ge varje lager rätt uppmärksamhet. Ansök nedan — vi hör av oss inom 24 timmar för att boka en genomgång med er data.</p>
-        <div style="display:flex;flex-direction:column;gap:.875rem">
-          <div style="display:flex;align-items:flex-start;gap:.875rem">
-            <div style="width:32px;height:32px;border-radius:50%;background:rgba(37,99,235,.2);border:1px solid rgba(59,130,246,.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.8rem;font-weight:700;color:var(--blue2)">1</div>
-            <div><div style="font-size:.88rem;font-weight:700;color:#fff;margin-bottom:2px">Ni skickar in er ansökan</div><div style="font-size:.8rem;color:rgba(255,255,255,.4);line-height:1.6">Namn, företag, affärssystem och ungefär antal artiklar i lagret.</div></div>
-          </div>
-          <div style="display:flex;align-items:flex-start;gap:.875rem">
-            <div style="width:32px;height:32px;border-radius:50%;background:rgba(37,99,235,.2);border:1px solid rgba(59,130,246,.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.8rem;font-weight:700;color:var(--blue2)">2</div>
-            <div><div style="font-size:.88rem;font-weight:700;color:#fff;margin-bottom:2px">Vi bokar 30 min genomgång</div><div style="font-size:.8rem;color:rgba(255,255,255,.4);line-height:1.6">Vi analyserar ert lager live med er egen artikeldata.</div></div>
-          </div>
-          <div style="display:flex;align-items:flex-start;gap:.875rem">
-            <div style="width:32px;height:32px;border-radius:50%;background:rgba(37,99,235,.2);border:1px solid rgba(59,130,246,.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.8rem;font-weight:700;color:var(--blue2)">3</div>
-            <div><div style="font-size:.88rem;font-weight:700;color:#fff;margin-bottom:2px">Ni bestämmer om ni vill gå vidare</div><div style="font-size:.8rem;color:rgba(255,255,255,.4);line-height:1.6">Ingen bindningstid, inga dolda kostnader. Pris sätts alltid i samråd.</div></div>
-          </div>
-        </div>
-      </div>
-      <!-- Höger: formulär -->
-      <div style="background:#0e1f3d;border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:2rem">
-        <div style="font-size:1rem;font-weight:800;color:#fff;margin-bottom:.4rem">Ansök om tillgång</div>
-        <div style="font-size:.8rem;color:rgba(255,255,255,.35);margin-bottom:1.5rem">Vi hör av oss inom 24 timmar.</div>
-        <form action="https://formspree.io/f/moeqazgz" method="POST" style="display:flex;flex-direction:column;gap:.875rem" onsubmit="handleFormSubmit(event)">
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem">
-            <div>
-              <label style="font-size:.72rem;font-weight:600;color:rgba(255,255,255,.4);display:block;margin-bottom:.3rem">Förnamn *</label>
-              <input name="fornamn" required type="text" placeholder="Erik" style="width:100%;background:#091224;border:1px solid rgba(255,255,255,.1);border-radius:7px;padding:.6rem .85rem;color:#fff;font-size:.85rem;font-family:inherit;outline:none" onfocus="this.style.borderColor='rgba(59,130,246,.5)'" onblur="this.style.borderColor='rgba(255,255,255,.1)'">
-            </div>
-            <div>
-              <label style="font-size:.72rem;font-weight:600;color:rgba(255,255,255,.4);display:block;margin-bottom:.3rem">Efternamn *</label>
-              <input name="efternamn" required type="text" placeholder="Lindberg" style="width:100%;background:#091224;border:1px solid rgba(255,255,255,.1);border-radius:7px;padding:.6rem .85rem;color:#fff;font-size:.85rem;font-family:inherit;outline:none" onfocus="this.style.borderColor='rgba(59,130,246,.5)'" onblur="this.style.borderColor='rgba(255,255,255,.1)'">
-            </div>
-          </div>
-          <div>
-            <label style="font-size:.72rem;font-weight:600;color:rgba(255,255,255,.4);display:block;margin-bottom:.3rem">Företag *</label>
-            <input name="foretag" required type="text" placeholder="Lindberg Industri AB" style="width:100%;background:#091224;border:1px solid rgba(255,255,255,.1);border-radius:7px;padding:.6rem .85rem;color:#fff;font-size:.85rem;font-family:inherit;outline:none" onfocus="this.style.borderColor='rgba(59,130,246,.5)'" onblur="this.style.borderColor='rgba(255,255,255,.1)'">
-          </div>
-          <div>
-            <label style="font-size:.72rem;font-weight:600;color:rgba(255,255,255,.4);display:block;margin-bottom:.3rem">E-post *</label>
-            <input name="email" required type="email" placeholder="erik@lindbergindustri.se" style="width:100%;background:#091224;border:1px solid rgba(255,255,255,.1);border-radius:7px;padding:.6rem .85rem;color:#fff;font-size:.85rem;font-family:inherit;outline:none" onfocus="this.style.borderColor='rgba(59,130,246,.5)'" onblur="this.style.borderColor='rgba(255,255,255,.1)'">
-          </div>
-          <div>
-            <label style="font-size:.72rem;font-weight:600;color:rgba(255,255,255,.4);display:block;margin-bottom:.3rem">Affärssystem</label>
-            <select name="erp" style="width:100%;background:#091224;border:1px solid rgba(255,255,255,.1);border-radius:7px;padding:.6rem .85rem;color:rgba(255,255,255,.7);font-size:.85rem;font-family:inherit;outline:none;appearance:none">
-              <option value="">Välj affärssystem...</option>
-              <option>Visma</option>
-              <option>Business Central</option>
-              <option>Monitor ERP</option>
-              <option>Pyramid</option>
-              <option>Jeeves</option>
-              <option>Fortnox</option>
-              <option>SAP</option>
-              <option>Annat</option>
-            </select>
-          </div>
-          <div>
-            <label style="font-size:.72rem;font-weight:600;color:rgba(255,255,255,.4);display:block;margin-bottom:.3rem">Ungefär antal artiklar i lagret</label>
-            <select name="artiklar" style="width:100%;background:#091224;border:1px solid rgba(255,255,255,.1);border-radius:7px;padding:.6rem .85rem;color:rgba(255,255,255,.7);font-size:.85rem;font-family:inherit;outline:none;appearance:none">
-              <option value="">Välj storlek...</option>
-              <option>Under 500 artiklar</option>
-              <option>500–2 000 artiklar</option>
-              <option>2 000–5 000 artiklar</option>
-              <option>Över 5 000 artiklar</option>
-            </select>
-          </div>
-          <button type="submit" class="btn-primary" style="width:100%;justify-content:center;margin-top:.25rem;padding:.8rem">Ansök om tillgång →</button>
-        </form>
-        <div id="form-success" style="display:none;text-align:center;padding:2rem 0">
-          <div style="font-size:2rem;margin-bottom:.75rem">✅</div>
-          <div style="font-weight:800;color:#fff;margin-bottom:.4rem">Ansökan mottagen!</div>
-          <div style="font-size:.83rem;color:rgba(255,255,255,.45)">Vi hör av oss inom 24 timmar.</div>
-        </div>
-      </div>
+    <div style="text-align:center;margin-top:48px">
+      <a href="file:///C:/Users/marko/Downloads/logitidewebsite.html#boka" class="btn-primary">Träffa oss — boka ett första samtal →</a>
     </div>
   </div>
-</div>
+</section>
 
-<!-- ══════════════════════ FAQ ══════════════════════ -->
-<div class="section-white" id="faq">
-  <div class="section">
-    <div class="eyebrow" style="color:var(--blue)">Vanliga frågor</div>
-    <h2>Det du undrar innan du testar</h2>
+<!-- PRICING -->
+<section class="section section-gray" id="pris">
+  <div class="inner">
+    <div class="eyebrow">Transparenta priser</div>
+    <h2>Inga överraskningar</h2>
+    <p class="section-sub">Fast månadspris inkluderar mjukvara, implementation och löpande konsultstöd. Inga dolda avgifter, inga timrapporter att godkänna.</p>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="price-plan">Insikt</div>
+        <div class="price-name">Grundoptimering</div>
+        <div class="price-amount"><span class="price-kr">3 900</span><span class="price-period">kr/mån</span></div>
+        <div class="price-note">Faktureras månadsvis · Ingen bindningstid</div>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li>Kostnadsfri lagerdiagnos</li>
+          <li>ABC + XYZ-analys</li>
+          <li>Brist- och överlagervarningar</li>
+          <li>Upp till 5 000 artiklar</li>
+          <li>1 konsultmöte per månad</li>
+        </ul>
+        <p class="price-upgrade-hint">Fler än 5 000 artiklar? Se Kontroll →</p>
+        <a href="file:///C:/Users/marko/Downloads/logitidewebsite.html#boka" class="btn-price btn-price-outline">Kom igång</a>
+      </div>
+      <div class="price-card featured">
+        <div class="price-ribbon">⭐ Populärast</div>
+        <div class="price-plan">Kontroll</div>
+        <div class="price-name">Full optimering</div>
+        <div class="price-amount"><span class="price-kr">7 900</span><span class="price-period">kr/mån</span></div>
+        <div class="price-note">Faktureras månadsvis · Ingen bindningstid</div>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li>Allt i Insikt</li>
+          <li>Inköpsoptimering</li>
+          <li>Zonoptimering</li>
+          <li>Upp till 20 000 artiklar</li>
+          <li>KPI-dashboard</li>
+          <li>30 min konsultmöte varje vecka</li>
+        </ul>
+        <a href="file:///C:/Users/marko/Downloads/logitidewebsite.html#boka" class="btn-price btn-price-solid">Boka ett första möte →</a>
+      </div>
+      <div class="price-card">
+        <div class="price-plan">Partnerskap</div>
+        <div class="price-name">Anpassad lösning</div>
+        <div class="price-amount"><span class="price-kr">14 900</span><span class="price-period">kr/mån</span></div>
+        <div class="price-note">Faktureras månadsvis · Flerårsavtal möjligt</div>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li>Allt i Kontroll</li>
+          <li>Obegränsat artikelantal</li>
+          <li>Flerlageröversikt</li>
+          <li>Dedikerad konsultansvarig</li>
+          <li>Upp till 6 tim konsultmöten per månad</li>
+          <li>Strategisk supply chain-rådgivning</li>
+          <li>SLA-garanti</li>
+        </ul>
+        <a href="file:///C:/Users/marko/Downloads/logitidewebsite.html#boka" class="btn-price btn-price-outline">Kontakta oss</a>
+      </div>
+    </div>
+    <p class="price-footer" style="margin-top:20px">Alla paket startar med en kostnadsfri lagerdiagnos · Frågor? Maila <a href="mailto:info@logitide.se" style="color:var(--blue);text-decoration:none">info@logitide.se</a></p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section section-light" id="faq">
+  <div class="inner">
+    <div class="eyebrow" style="text-align:center">FAQ</div>
+    <h2 style="text-align:center;margin-bottom:48px">Vanliga frågor</h2>
     <div class="faq-list">
       <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Hur snabbt kan vi få vår första analys? <span class="faq-chevron">▼</span></div>
-        <div class="faq-a">På under 60 sekunder efter att ni laddat upp er artikelexport. Ingen installation, ingen IT-avdelning, ingen väntetid. Exportera från ert affärssystem, ladda upp i Logitide — klart.</div>
+        <button class="faq-q" onclick="faq(this)">Vad kostar det att komma igång?<span class="faq-chevron">›</span></button>
+        <div class="faq-a">Diagnosen är kostnadsfri och kräver inget av er utöver ett kort möte. Vi analyserar ert lager, presenterar vad vi hittar i kronor och visar hur ett samarbete kan se ut — utan förpliktelser. Abonnemang börjar på 3 900 kr/mån och startar när ni är redo.</div>
       </div>
       <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Påverkar Logitide vår befintliga ERP-databas? <span class="faq-chevron">▼</span></div>
-        <div class="faq-a">Nej, överhuvudtaget inte. Logitide läser er Excel-export och analyserar den — vi skriver aldrig tillbaka till ert system. Er data är er data.</div>
+        <button class="faq-q" onclick="faq(this)">Behöver vi integrera med vårt ERP?<span class="faq-chevron">›</span></button>
+        <div class="faq-a">Nej. Vi arbetar med vanlig Excel-export från vilket affärssystem som helst — Monitor, Pyramid, Jeeves, Business Central, SAP eller något annat. Under uppstarten hjälper vi er att sätta upp rätt KPI:er och dataexport — oftast löst på ett möte, tillsammans med er.</div>
       </div>
       <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Vad krävs av mig som lagerchef under testet? <span class="faq-chevron">▼</span></div>
-        <div class="faq-a">En Excel-export ur ert affärssystem med artikelnummer, lagersaldo och förbrukning. Det tar vanligtvis under 5 minuter att ta ut. Vi hjälper er om ni fastnar.</div>
+        <button class="faq-q" onclick="faq(this)">Hur lång är bindningstiden?<span class="faq-chevron">›</span></button>
+        <div class="faq-a">Ingen bindningstid — ni kan avsluta månadsvis från dag ett. Vi tror att ni stannar för att det fungerar, inte för att ni måste.</div>
       </div>
       <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Hur sätts priset efter piloten? <span class="faq-chevron">▼</span></div>
-        <div class="faq-a">Vi sätter pris tillsammans med er — baserat på vilket konkret värde systemet levererat under piloten. Minskat överlager i kronor, färre brister, inbesparad tid. Ingen bindningstid.</div>
+        <button class="faq-q" onclick="faq(this)">Hur lång tid tar implementationen?<span class="faq-chevron">›</span></button>
+        <div class="faq-a">Själva uppsättningen är snabb — KPI:erna konfigurerar vi under ett möte, och dataexporten från ert affärssystem automatiserar vi typiskt samma vecka. Ni ser era första analyser inom ett par dagar från start. Därefter kalibrerar vi systemet löpande under de första tre månaderna — servicenivåer, säkerhetslager och inköpspunkter finjusteras baserat på hur ert lager faktiskt beter sig i verkligheten. Det är när de flesta kunder ser störst effekt.</div>
       </div>
       <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Fungerar det med vårt affärssystem? <span class="faq-chevron">▼</span></div>
-        <div class="faq-a">Ja. Logitide läser Excel-filer, vilket alla affärssystem kan exportera — Visma, Business Central, SAP, Monitor ERP, Fortnox, Pyramid, Jeeves och alla andra. Om ni kan exportera till Excel fungerar Logitide.</div>
+        <button class="faq-q" onclick="faq(this)">Hur snabbt ser vi resultat?<span class="faq-chevron">›</span></button>
+        <div class="faq-a">Redan efter den kostnadsfria diagnosen har ni ett konkret underlag — överlager, kritiska brister och bundet kapital i kronor. Fullständig optimering med kalibrerade inköpspunkter brukar ge märkbar effekt inom 4–8 veckor.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="faq(this)">Påverkar det hur vi jobbar i ERP-systemet?<span class="faq-chevron">›</span></button>
+        <div class="faq-a">Inte alls. Logitide är ett beslutsstöd vid sidan av ert befintliga system. Ni fortsätter lägga orders och jobba i ert ERP precis som vanligt — Logitide ger er bara bättre underlag för besluten.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="faq(this)">Hur hanteras vår data och GDPR?<span class="faq-chevron">›</span></button>
+        <div class="faq-a">All data behandlas inom EU och lagras på svenska servrar. Vi signerar databehandlingsavtal (DPA) med alla kunder. Er artikeldata används aldrig för att träna modeller eller delas med tredje part.</div>
       </div>
     </div>
   </div>
-</div>
+</section>
 
-<!-- ══════════════════════ FINAL CTA ══════════════════════ -->
-<div class="final-cta">
-  <div style="max-width:620px;margin:0 auto">
-    <h2>Redo att se hur ditt<br><span>lager ser ut i Logitide?</span></h2>
-    <p>Vi tar emot ett begränsat antal kunder åt gången. Ansök nedan — vi hör av oss inom 24 timmar.</p>
-    <div class="final-btns">
-      <a href="#pilot" class="btn-primary-dark">Ansök om tillgång →</a>
-      <a href="#apply" class="btn-outline">⚡ Se en snabb demo</a>
+<!-- CTA / FORM -->
+<section class="section section-gray" id="boka">
+  <div class="inner">
+    <div class="cta-form-wrap">
+      <div class="eyebrow eyebrow-light" style="text-align:center">Kom igång idag</div>
+      <h2 class="light">Boka er kostnadsfria lagerdiagnos</h2>
+      <p>Fyll i formuläret — vi hör av oss inom en arbetsdag för att boka ett möte. Vi analyserar ert lager, visar vad vi hittar i kronor och presenterar hur ett samarbete kan se ut. Utan förpliktelser.</p>
+      <form action="https://formspree.io/f/moeqazgz" method="POST" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <input class="form-input" type="text" name="name" placeholder="Namn" required="">
+          <input class="form-input" type="text" name="company" placeholder="Företag" required="">
+        </div>
+        <div class="form-row one">
+          <input class="form-input" type="email" name="email" placeholder="E-postadress" required="">
+        </div>
+        <div class="form-row one">
+          <button class="btn-form" type="submit">Skicka — vi hör av oss inom 1 arbetsdag →</button>
+        </div>
+      </form>
+      <p class="form-disclaimer">Kostnadsfri diagnos · Ingen bindningstid · Svar inom 1 arbetsdag · Vi ringer eller mailar</p>
+      <p class="form-disclaimer" style="margin-top:8px">Genom att skicka godkänner du att vi kontaktar dig. Vi delar aldrig dina uppgifter med tredje part.</p>
     </div>
   </div>
-</div>
+</section>
 
-<!-- ══════════════════════ FOOTER ══════════════════════ -->
+<!-- FOOTER -->
 <footer>
-  <div class="logo">
-    <div class="logo-icon">
-      <svg viewBox="0 0 24 24" style="width:14px;height:14px;stroke:#fff;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+  <div class="footer-inner">
+    <a href="file:///C:/Users/marko/Downloads/logitidewebsite.html#" class="footer-brand">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"></path>
+        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+      </svg>
+      Logitide
+    </a>
+    <span>© 2026 Logitide AB · <a href="mailto:info@logitide.se" style="color:rgba(255,255,255,0.4);text-decoration:none">info@logitide.se</a></span>
+    <div class="footer-links">
+      <a href="file:///C:/Users/marko/Downloads/logitidewebsite.html#">Integritetspolicy</a>
+      <a href="file:///C:/Users/marko/Downloads/logitidewebsite.html#">Villkor</a>
+      <a href="mailto:info@logitide.se">Kontakt</a>
     </div>
-    <span class="logo-name" style="font-size:.9rem">Logitide</span>
-    <span style="font-size:.78rem;color:rgba(255,255,255,.25);margin-left:6px">— Lageroptimering för svenska industrilager</span>
-  </div>
-  <div style="display:flex;gap:1.5rem;align-items:center">
-    <a href="mailto:info@logitide.se">info@logitide.se</a>
-    <a href="https://logitide-frontend.vercel.app">Öppna appen</a>
   </div>
 </footer>
 
 <script>
-function toggleFaq(el) {
-  const item = el.parentElement;
-  const wasOpen = item.classList.contains('open');
-  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-  if (!wasOpen) item.classList.add('open');
-}
-function handleFormSubmit(e) {
-  e.preventDefault();
-  const form = e.target;
-  const data = new FormData(form);
-  fetch(form.action, {
-    method: 'POST',
-    body: data,
-    headers: { 'Accept': 'application/json' }
-  }).then(r => {
-    form.style.display = 'none';
-    document.getElementById('form-success').style.display = 'block';
-  }).catch(() => {
-    // fallback — öppna mailto om fetch misslyckas
-    window.location.href = 'mailto:info@logitide.se?subject=Ansökan om tillgång till Logitide';
+function faq(btn) {
+  const a = btn.nextElementSibling;
+  const isOpen = btn.classList.contains('open');
+  document.querySelectorAll('.faq-q').forEach(b => {
+    b.classList.remove('open');
+    b.nextElementSibling.classList.remove('open');
   });
+  if (!isOpen) { btn.classList.add('open'); a.classList.add('open'); }
+}
+
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('.btn-form');
+  btn.textContent = 'Skickat! Vi hör av oss inom 1 arbetsdag.';
+  btn.style.background = '#16A34A';
+  btn.disabled = true;
+  // Skicka till mailto som fallback tills Formspree är konfigurerat
+  const name = e.target.name.value;
+  const company = e.target.company.value;
+  const email = e.target.email.value;
+  window.location.href = `mailto:info@logitide.se?subject=Lagerdiagnos - ${company}&body=Namn: ${name}%0AEmail: ${email}%0AFöretag: ${company}`;
 }
 </script>
+</body></html>
